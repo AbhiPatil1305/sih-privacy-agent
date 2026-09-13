@@ -15,6 +15,7 @@ export interface DOMElement {
   id: string;
   tag: string;
   type?: string;
+  role?: string;
   label?: string;
   text?: string;
   bbox: BoundingBox;

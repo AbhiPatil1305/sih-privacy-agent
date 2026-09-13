@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Shield, ShieldAlert, Zap, Lock, Eye, EyeOff, Activity, Download } from 'lucide-react';
 import { capturePage } from '../capture/page-capture';
-import { MockOCRProvider } from '../vision/ocr';
+import { RealOCRProvider } from '../vision/ocr';
 import { runPrivacyIntelligence } from '../privacy/intelligence';
 import { redactScreenshot } from '../privacy/redactor';
 import { fetchAgentPlan } from '../network/api-client';
@@ -9,10 +9,10 @@ import { PageCapture } from '../shared/types';
 import { sanitizeDOM } from '../privacy/dom-sanitizer'; // keep text sanitization
 
 function injectedActionExecutor(action: any) {
-  const el = document.querySelector(`[data-agent-id="${action.target.elementId}"]`) as HTMLElement;
-  if (!el) return false;
+  const el = action.target?.elementId ? document.querySelector(`[data-agent-id="${action.target.elementId}"]`) as HTMLElement : null;
 
   if (action.type === 'click') {
+    if (!el) return false;
     el.click();
     return true;
   }
@@ -27,10 +27,11 @@ function injectedActionExecutor(action: any) {
   }
   
   if (action.type === 'scroll') {
-    window.scrollBy({
-      top: action.direction === 'down' ? window.innerHeight / 2 : -window.innerHeight / 2,
-      behavior: 'smooth'
-    });
+    const scrollAmount = action.direction === 'down' ? window.innerHeight / 1.5 : -window.innerHeight / 1.5;
+    window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+    if (document.scrollingElement) {
+      document.scrollingElement.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+    }
     return true;
   }
 
@@ -86,25 +87,11 @@ function App() {
       setOriginalImage(pageData.screenshot);
 
       addLog('Running OCR Mock Interface...');
-      const ocrProvider = new MockOCRProvider();
+      const ocrProvider = new RealOCRProvider();
       const ocrResults = await ocrProvider.runOCR(pageData.screenshot);
 
       addLog('Fusing Privacy Intelligence...');
       const privacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults);
-
-      // We allow injecting an external mock privacy region for Integration Demo if requested
-      const demoRegion = {
-        id: 'pr_mock_test',
-        bbox: { x: 420, y: 300, width: 180, height: 30 },
-        category: 'EMAIL' as const,
-        confidence: 0.99,
-        protection: 'BLACK' as const
-      };
-      
-      // If OCR hasn't picked it up, force our integration demo region for visibility in the UI test
-      if (privacyRegions.length === 0) {
-        privacyRegions.push(demoRegion);
-      }
 
       addLog(`Redacting ${privacyRegions.length} regions...`);
       const safeImage = await redactScreenshot(pageData.screenshot, privacyRegions, pageData.viewport.devicePixelRatio);
@@ -152,7 +139,7 @@ function App() {
 
       const t1 = performance.now();
       addLog('Mock OCR & Intelligence...');
-      const ocr = new MockOCRProvider();
+      const ocr = new RealOCRProvider();
       const ocrResults = await ocr.runOCR(pageData.screenshot);
       const privacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults);
       m['Intelligence'] = Math.round(performance.now() - t1);
