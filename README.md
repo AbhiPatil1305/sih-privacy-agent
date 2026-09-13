@@ -5,67 +5,50 @@
 
 This repository contains a production-ready MVP for a privacy-first browser agent implemented as a Chrome Extension. The architecture is explicitly designed to act as a secure, local intermediary between the user's browser and any external AI/VLM backend, ensuring that raw sensitive information is never transmitted over the network.
 
-## 🚀 Key Features
+---
 
-*   **Local DOM & Screenshot Extraction**: Efficiently captures viewport dimensions, semantic DOM elements, and a screenshot of the active tab.
-*   **On-Device PII Sanitization (Privacy First)**: Detects and physically redacts sensitive UI regions (e.g., Passwords, Emails, Credit Cards, SSN) locally using `OffscreenCanvas` and Regex pipelines *before* generating context payloads.
-*   **Visual DOM Deduplication**: Intelligently drops overlapping invisible `<div>` wrappers to provide clean, semantic bounding boxes for the ML model.
-*   **Strict Input Filtering**: Never records or extracts `value` attributes or user-typed text from input fields.
-*   **Coordinate Mapping Engine**: Ensures pixel-perfect alignment between standard DOM Viewport Coordinates and `devicePixelRatio` scaled screenshots.
-*   **React Side Panel Dashboard**: Provides real-time metrics, privacy logs, execution timelines, and a visual Demo Mode showing Original vs Sanitized screenshots.
-*   **Mock Planning API**: Includes a lightweight Mock AI that translates natural language tasks (like "Scroll down" or "Type hello") into structured JSON actions (`AgentAction`), which are then validated and executed programmatically.
+## 🛠️ Languages & Tech Stack
+
+*   **TypeScript / JavaScript**: The primary programming language used for the entire project. TypeScript provides strong typing to prevent bugs and ensure strictly formatted data payloads.
+*   **React 18**: The frontend library used to build the interactive Side Panel Dashboard UI.
+*   **Vite & CRXJS**: A lightning-fast build tool paired with a specialized plugin to seamlessly build Chrome Extensions using the modern Manifest V3 standard.
+*   **Chrome Extension APIs (Manifest V3)**:
+    *   *Service Workers (`background.ts`)*: Runs in the background to handle tasks like capturing the screen.
+    *   *Scripting API (`chrome.scripting`)*: Used to inject our DOM extraction code directly into the webpage on command.
+    *   *Side Panel API (`chrome.sidePanel`)*: Allows our React dashboard to stay open persistently on the side of the browser.
+*   **OffscreenCanvas**: A specialized browser API used to physically paint black redaction boxes over sensitive screenshots in the background, ensuring privacy *before* the image is saved.
+*   **Transformers.js (`@xenova/transformers`)**: Pre-configured to run local AI models directly in the browser (via WebGPU/WASM), preparing the extension for Phase 10 (Local Vision Model).
+*   **Lucide-React**: An open-source icon library used for professional UI elements.
 
 ---
 
-## 🛠️ Tech Stack
+## 🧠 Core Components & Architecture
 
-*   **Frontend / UI**: React 18, TypeScript, Lucide Icons
-*   **Build Tool**: Vite + CRXJS (Manifest V3)
-*   **Vision / ML Readiness**: `@xenova/transformers` (Configured for WebGPU/WASM injection for Phase 10 integration)
-*   **Browser APIs**: `chrome.scripting`, `chrome.tabs`, `chrome.sidePanel`, `chrome.runtime`
-
----
-
-## 📦 Installation & Setup
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/AbhiPatil1305/sih-privacy-agent.git
-   cd sih-privacy-agent
-   ```
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-3. **Build the extension**:
-   ```bash
-   npm run build
-   ```
-4. **Load into Chrome**:
-   * Open Google Chrome and go to `chrome://extensions/`.
-   * Enable **Developer mode** (top right corner).
-   * Click **Load unpacked** (top left).
-   * Select the generated `dist` folder located inside the project directory.
+1.  **DOM Extractor (`injectedDOMExtractor`)**
+    *   Injects itself into the active webpage to map the physical coordinates (`x, y, width, height`) of every visible UI element.
+    *   Includes a **Visual Deduplication Engine** that ignores invisible overlapping layers to give the ML model clean data. Crucially, it intentionally ignores actual user-typed `value` data to maintain strict privacy.
+2.  **Privacy Pipeline (`dom-detector.ts` & `dom-sanitizer.ts`)**
+    *   Scans extracted data for Personally Identifiable Information (PII) like emails, passwords, and phone numbers using Regex and structural rules.
+    *   If it finds PII, it redacts the text (e.g., replaces it with `[REDACTED_EMAIL]`) and flags the visual coordinates for image redaction.
+3.  **Mock AI Agent (`api-client.ts`)**
+    *   Acts as a placeholder for the ML model. It reads natural language commands and matches them against the extracted DOM to return a structured machine action.
+4.  **Action Executor (`injectedActionExecutor`)**
+    *   Takes the planned action from the AI (e.g., `click element el_014`) and physically executes the click or scroll on the actual webpage.
 
 ---
 
-## 💻 Usage
+## 💻 How to Use the Extension
 
-1. Pin the **Privacy Agent V1** extension to your Chrome toolbar.
-2. Navigate to a normal webpage (e.g., a login form or dashboard). *Note: Extension cannot run on internal `chrome://` pages.*
-3. Click the extension icon to open the **Side Panel Dashboard**.
-
-### For ML / Vision Teams (Phase 1+2)
-Click the **"Analyze Page (For ML Team)"** button to run the extraction and privacy pipeline. The extension will automatically download two files:
-*   `screenshot.png` - The locally sanitized viewport image.
-*   `context.json` - The deduplicated, PII-scrubbed structural mapping containing `viewport` metadata and semantic `elements`.
-
-### For Agent Simulation
-Type a natural language command into the input box and click **Execute Task**. The system will extract, sanitize, send context to the Mock API, and perform the resulting action on the page. 
-*Example commands:*
-*   `Scroll down`
-*   `Click login`
-*   `Type hello`
+1.  **Open a Webpage**: Navigate to any normal website (e.g., a login page or Google). *Note: Extensions cannot run on internal browser settings pages like `chrome://`.*
+2.  **Open the Dashboard**: Click the extension icon in your Chrome toolbar. The sleek Privacy Agent dashboard will open in the side panel.
+3.  **For the ML Team (Analyze Page)**: 
+    *   Click the **"Analyze Page"** button. 
+    *   The extension will map the screen, physically redact PII from the image, scrub PII from the text, and automatically download two files: `screenshot.png` and a perfectly structured, sanitized `context.json`.
+4.  **For the AI Demo (Execute Task)**: 
+    *   Type a natural language command into the input box and hit **Execute Task**.
+    *   Type `"Scroll down"` to see it manipulate the page.
+    *   Type `"Click [name of a button on screen]"` (e.g., "Click login") to see the agent autonomously find the button and click it!
+5.  **Demo Mode**: Toggle the "Demo" button in the top right of the dashboard to see a side-by-side visual comparison of the original screenshot and the privacy-sanitized screenshot.
 
 ---
 
@@ -96,3 +79,25 @@ To ensure compliance with SIH PS26171, the generated JSON structure deliberately
   ]
 }
 ```
+
+---
+
+## 📦 Installation for Developers
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/AbhiPatil1305/sih-privacy-agent.git
+   cd sih-privacy-agent
+   ```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Build the extension**:
+   ```bash
+   npm run build
+   ```
+4. **Load into Chrome**:
+   * Go to `chrome://extensions/`.
+   * Enable **Developer mode**.
+   * Click **Load unpacked** and select the `dist` folder.
