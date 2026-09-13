@@ -5,47 +5,49 @@ export interface BoundingBox {
   height: number;
 }
 
-export interface ScreenshotData {
-  image: string; 
-  width: number;
-  height: number;
-  timestamp: number;
-}
-
-export interface SafeElement {
-  id: string;
-  tag: string;
-  role?: string;
-  label?: string;
-  type?: string; // used for input type (e.g., 'email', 'password')
-  bbox: BoundingBox;
-}
-
 export interface ViewportInfo {
   width: number;
   height: number;
   devicePixelRatio: number;
 }
 
-export interface SafeDOMStructure {
-  viewport: ViewportInfo;
-  elements: SafeElement[];
-}
-
-export interface PageStructure {
-  url: string;
-  title: string;
-  viewport: ViewportInfo;
-  elements: SafeElement[];
-}
-
-export interface SensitiveRegion {
-  type: "password" | "email" | "phone" | "pii" | "face" | "token";
+export interface DOMElement {
+  id: string;
+  tag: string;
+  type?: string;
+  label?: string;
+  text?: string;
   bbox: BoundingBox;
-  confidence: number;
-  source: "dom" | "vision" | "regex";
 }
 
+export interface PageCapture {
+  screenshot: string; // Base64 Data URL for now
+  viewport: ViewportInfo;
+  elements: DOMElement[];
+}
+
+// ---- TEAM 2 (OCR) INTERFACES ----
+export interface OCRResult {
+  text: string;
+  confidence: number;
+  bbox: BoundingBox;
+  polygon?: [number, number][];
+}
+
+export interface OCRProvider {
+  runOCR(screenshot: string): Promise<OCRResult[]>;
+}
+
+// ---- PRIVACY INTELLIGENCE INTERFACES ----
+export interface PrivacyRegion {
+  id: string;
+  bbox: BoundingBox;
+  category: "EMAIL" | "PHONE" | "PERSON" | "PASSWORD" | "ADDRESS" | "OTHER";
+  confidence: number;
+  protection: "BLACK" | "BLUR" | "REPLACE";
+}
+
+// ---- AGENT INTERFACES ----
 export interface VisionObject {
   id: string;
   label: string;
@@ -56,8 +58,11 @@ export interface SafeBrowserContext {
   pageTitle: string;
   url: string;
   sanitizedScreenshot?: string;
-  sanitizedDOM: SafeDOMStructure;
-  visibleElements: SafeElement[];
+  sanitizedDOM: {
+    viewport: ViewportInfo;
+    elements: DOMElement[];
+  };
+  visibleElements: DOMElement[];
   detectedObjects?: VisionObject[];
 }
 
