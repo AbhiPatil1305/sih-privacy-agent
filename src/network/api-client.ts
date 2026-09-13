@@ -1,24 +1,9 @@
 import { SafeBrowserContext, AgentAction } from '../shared/types';
 
 export async function fetchAgentPlan(task: string, context: SafeBrowserContext): Promise<{ actions: AgentAction[], reasoning: string }> {
-  console.log("Team 1: Sending sanitized context to Server...");
-  
-  try {
-    // Try to hit the real local server (Phase 11)
-    const response = await fetch('http://localhost:3000/api/plan', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ task, context })
-    });
-    
-    if (response.ok) {
-      return await response.json();
-    }
-  } catch (e) {
-    console.warn("Real server at localhost:3000 not reachable. Falling back to local mock...", e);
-  }
+  console.log("Team 1: Running Local Mock AI Agent (No external server used)");
 
-  // FALLBACK LOGIC
+  // 100% LOCAL MOCK LOGIC (No backend required for Team 1 Demo)
   return new Promise((resolve) => {
     setTimeout(() => {
       const lowerTask = task.toLowerCase();
@@ -26,7 +11,15 @@ export async function fetchAgentPlan(task: string, context: SafeBrowserContext):
       if (lowerTask.includes('scroll down')) {
         resolve({
           actions: [{ type: 'scroll', direction: 'down' }],
-          reasoning: "Fallback: User explicitly requested to scroll down the page."
+          reasoning: "Local Mock: User explicitly requested to scroll down the page."
+        });
+        return;
+      }
+
+      if (lowerTask.includes('scroll up')) {
+        resolve({
+          actions: [{ type: 'scroll', direction: 'up' }],
+          reasoning: "Local Mock: User explicitly requested to scroll up the page."
         });
         return;
       }
@@ -41,25 +34,29 @@ export async function fetchAgentPlan(task: string, context: SafeBrowserContext):
         if (inputField) {
           resolve({
             actions: [{ type: 'type', target: { elementId: inputField.id }, text: textToType }],
-            reasoning: `Fallback: Found an input field (ID: ${inputField.id}). Proceeding to type "${textToType}".`
+            reasoning: `Local Mock: Found an input field (ID: ${inputField.id}). Proceeding to type "${textToType}".`
           });
           return;
         }
       }
 
       if (lowerTask.includes('click')) {
-        const words = lowerTask.split(' ');
-        let targetButton = context.visibleElements.find(el => 
-          (el.tag === 'button' || el.role === 'button' || el.tag === 'a') &&
-          el.label && words.some(w => el.label!.toLowerCase().includes(w) && w.length > 3)
-        );
+        const searchTarget = lowerTask.replace('click', '').trim();
+        const words = searchTarget.split(' ').filter(w => w.length > 2);
 
-        if (!targetButton) targetButton = context.visibleElements.find(el => el.tag === 'button' || el.tag === 'a' || el.role === 'button');
+        let btn = context.visibleElements.find(el => {
+          const isClickable = ['button', 'a', 'div', 'span'].includes(el.tag) || ['button', 'link', 'menuitem'].includes(el.role);
+          if (!isClickable || !el.label) return false;
+          
+          const labelLower = el.label.toLowerCase();
+          if (searchTarget && labelLower.includes(searchTarget)) return true;
+          return words.some(w => labelLower.includes(w));
+        });
 
-        if (targetButton) {
+        if (btn) {
           resolve({
-            actions: [{ type: 'click', target: { elementId: targetButton.id } }],
-            reasoning: `Fallback: Matched intent to click. Target element selected: ${targetButton.label || targetButton.tag} (ID: ${targetButton.id}).`
+             actions: [{ type: 'click', target: { elementId: btn.id } }],
+             reasoning: `Local Mock: Located element "${btn.label}" (ID: ${btn.id}) and scheduled a click.`
           });
           return;
         }
@@ -67,7 +64,7 @@ export async function fetchAgentPlan(task: string, context: SafeBrowserContext):
       
       resolve({
         actions: [{ type: 'wait', duration: 1000 }],
-        reasoning: "Fallback: Could not map the natural language task to a visible element or action. Waiting."
+        reasoning: "Local Mock: Could not map the natural language task to a visible element or action. Waiting."
       });
     }, 800);
   });
