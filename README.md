@@ -1,103 +1,115 @@
-# 🛡️ Privacy-Preserving Browser Agent
+# SIH 2026: Privacy-Preserving Browser Agent
 
-**Smart India Hackathon (SIH) Prototype - Problem Statement 26171**  
-*“On-device Visual Perception for Light-weight Browser Agents”*
+**Problem Statement 26171**
 
-This repository contains a production-ready MVP for a privacy-first browser agent implemented as a Chrome Extension. The architecture is explicitly designed to act as a secure, local intermediary between the user's browser and any external AI/VLM backend, ensuring that raw sensitive information is never transmitted over the network.
+This repository contains the **Integration Layer (Team 1)** of our privacy-preserving browser extension. It acts as the "eyes and hands" of our AI system, capturing the user's screen and DOM, strictly filtering out personal data, sending clean data to the AI Brain, and physically executing the AI's actions.
 
----
+## 🚀 Key Features
 
-## 🛠️ Languages & Tech Stack
-
-*   **TypeScript / JavaScript**: The primary programming language used for the entire project. TypeScript provides strong typing to prevent bugs and ensure strictly formatted data payloads.
-*   **React 18**: The frontend library used to build the interactive Side Panel Dashboard UI.
-*   **Vite & CRXJS**: A lightning-fast build tool paired with a specialized plugin to seamlessly build Chrome Extensions using the modern Manifest V3 standard.
-*   **Chrome Extension APIs (Manifest V3)**:
-    *   *Service Workers (`background.ts`)*: Runs in the background to handle tasks like capturing the screen.
-    *   *Scripting API (`chrome.scripting`)*: Used to inject our DOM extraction code directly into the webpage on command.
-    *   *Side Panel API (`chrome.sidePanel`)*: Allows our React dashboard to stay open persistently on the side of the browser.
-*   **OffscreenCanvas**: A specialized browser API used to physically paint black redaction boxes over sensitive screenshots in the background, ensuring privacy *before* the image is saved.
-*   **Transformers.js (`@xenova/transformers`)**: Pre-configured to run local AI models directly in the browser (via WebGPU/WASM), preparing the extension for Phase 10 (Local Vision Model).
-*   **Lucide-React**: An open-source icon library used for professional UI elements.
+* **Advanced DOM Extraction**: Maps the physical coordinates (`x, y, width, height`) of every visible semantic element on the page.
+* **Smart Geometric Deduplication**: Automatically filters out invisible, overlapping `<div>` wrappers to provide the ML team with clean, semantic data.
+* **Local Privacy Engine**: Uses Regex to scrub PII (Emails, Phone Numbers) from the DOM text, and entirely ignores user-typed `value` fields.
+* **On-Device Vision (OCR)**: Integrates `Tesseract.js` locally to physically read text off the screenshot pixels without sending images to the cloud.
+* **Privacy Fusion Layer**: Cross-references DOM and OCR signals to generate highly accurate visual redaction boxes.
+* **Visual Redactor**: Uses `OffscreenCanvas` to physically paint black boxes over sensitive data on the screenshot image *before* it leaves the browser.
+* **Coordinate Alignment**: Uses `devicePixelRatio` scaling to ensure CSS DOM coordinates perfectly overlap with high-resolution image device pixels.
+* **Action Executor**: Accepts structured commands (e.g., `click`, `scroll`, `type`) and autonomously drives the browser.
 
 ---
 
-## 🧠 Core Components & Architecture
+## 🛠️ Installation & Setup
 
-1.  **DOM Extractor (`injectedDOMExtractor`)**
-    *   Injects itself into the active webpage to map the physical coordinates (`x, y, width, height`) of every visible UI element.
-    *   Includes a **Visual Deduplication Engine** that ignores invisible overlapping layers to give the ML model clean data. Crucially, it intentionally ignores actual user-typed `value` data to maintain strict privacy.
-2.  **Privacy Pipeline (`dom-detector.ts` & `dom-sanitizer.ts`)**
-    *   Scans extracted data for Personally Identifiable Information (PII) like emails, passwords, and phone numbers using Regex and structural rules.
-    *   If it finds PII, it redacts the text (e.g., replaces it with `[REDACTED_EMAIL]`) and flags the visual coordinates for image redaction.
-3.  **Mock AI Agent (`api-client.ts`)**
-    *   Acts as a placeholder for the ML model. It reads natural language commands and matches them against the extracted DOM to return a structured machine action.
-4.  **Action Executor (`injectedActionExecutor`)**
-    *   Takes the planned action from the AI (e.g., `click element el_014`) and physically executes the click or scroll on the actual webpage.
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
----
+2. **Build the Extension**
+   ```bash
+   npm run build
+   ```
 
-## 💻 How to Use the Extension
+3. **Load into Chrome**
+   * Go to `chrome://extensions/`
+   * Enable **Developer mode**
+   * Click **Load unpacked**
+   * Select the `/dist` folder inside this project directory.
 
-1.  **Open a Webpage**: Navigate to any normal website (e.g., a login page or Google). *Note: Extensions cannot run on internal browser settings pages like `chrome://`.*
-2.  **Open the Dashboard**: Click the extension icon in your Chrome toolbar. The sleek Privacy Agent dashboard will open in the side panel.
-3.  **For the ML Team (Analyze Page)**: 
-    *   Click the **"Analyze Page"** button. 
-    *   The extension will map the screen, physically redact PII from the image, scrub PII from the text, and automatically download two files: `screenshot.png` and a perfectly structured, sanitized `context.json`.
-4.  **For the AI Demo (Execute Task)**: 
-    *   Type a natural language command into the input box and hit **Execute Task**.
-    *   Type `"Scroll down"` to see it manipulate the page.
-    *   Type `"Click [name of a button on screen]"` (e.g., "Click login") to see the agent autonomously find the button and click it!
-5.  **Demo Mode**: Toggle the "Demo" button in the top right of the dashboard to see a side-by-side visual comparison of the original screenshot and the privacy-sanitized screenshot.
+4. **Test the Demo**
+   * Open the extension side panel on any webpage.
+   * Click **Unified Capture (ML Export)** to capture the DOM, run local OCR, and preview the dynamically redacted screenshot.
+   * Type a command like `"scroll down"` and click **Execute Task** to test the Action Executor.
 
 ---
 
-## 🔒 Privacy Architecture Output (`context.json`)
+## 🧩 Architecture & Core Modules
 
-To ensure compliance with SIH PS26171, the generated JSON structure deliberately omits values and scrubs PII text.
+### 1. Unified Capture API (`src/capture/page-capture.ts`)
+The single entry point for capturing the page. It calls the DOM Extractor script and takes a screenshot, returning a unified `PageCapture` object.
 
-```json
-{
-  "viewport": {
-    "width": 1440,
-    "height": 900,
-    "devicePixelRatio": 1
-  },
-  "elements": [
-    {
-      "id": "el_001",
-      "tag": "input",
-      "type": "email",
-      "label": "Email",
-      "bbox": {
-        "x": 410,
-        "y": 280,
-        "width": 350,
-        "height": 45
-      }
-    }
-  ]
+### 2. Privacy Intelligence (`src/privacy/intelligence.ts`)
+The "Fusion Center". It takes raw `DOMElement[]` and `OCRResult[]` arrays, detects sensitive data, applies **Geometric Filtering** to prevent layout destruction from massive wrapper elements, and outputs precise `PrivacyRegion[]` boxes.
+
+### 3. Redaction Engine (`src/privacy/redactor.ts`)
+Takes an array of `PrivacyRegion` boxes, scales them to the physical image using the screen's `devicePixelRatio`, and paints irreversible black boxes on the image using an HTML5 `OffscreenCanvas`.
+
+---
+
+## 📜 Shared TypeScript Interfaces (For ML Teams)
+
+The following interfaces are defined in `src/shared/types.ts` and represent the standardized data contracts between the Extension and the AI Model.
+
+```typescript
+export interface BoundingBox {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+export interface ViewportInfo {
+  width: number;
+  height: number;
+  devicePixelRatio: number;
+}
+
+// Cleaned, safe DOM element
+export interface DOMElement {
+  id: string;
+  tag: string;
+  type?: string;
+  role?: string;
+  label?: string; // Text is sanitized here (e.g. "[REDACTED_EMAIL]")
+  bbox: BoundingBox;
+}
+
+// Vision team output
+export interface OCRResult {
+  text: string;
+  confidence: number;
+  bbox: BoundingBox;
+}
+
+// Final Redaction Box
+export interface PrivacyRegion {
+  id: string;
+  bbox: BoundingBox;
+  category: "EMAIL" | "PHONE" | "PERSON" | "PASSWORD" | "OTHER";
+  protection: "BLACK" | "BLUR" | "REPLACE";
+}
+
+// The unified payload sent to the Backend/VLM
+export interface SafeBrowserContext {
+  pageTitle: string;
+  url: string;
+  sanitizedScreenshot?: string;
+  sanitizedDOM: {
+    viewport: ViewportInfo;
+    elements: DOMElement[];
+  };
+  visibleElements: DOMElement[];
 }
 ```
 
 ---
-
-## 📦 Installation for Developers
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/AbhiPatil1305/sih-privacy-agent.git
-   cd sih-privacy-agent
-   ```
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-3. **Build the extension**:
-   ```bash
-   npm run build
-   ```
-4. **Load into Chrome**:
-   * Go to `chrome://extensions/`.
-   * Enable **Developer mode**.
-   * Click **Load unpacked** and select the `dist` folder.
+*Built for SIH 2026.*
