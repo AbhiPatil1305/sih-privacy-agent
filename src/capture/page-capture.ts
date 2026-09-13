@@ -1,16 +1,12 @@
 import { PageCapture } from '../shared/types';
 
 export async function capturePage(tabId: number): Promise<PageCapture> {
-  // 1. Capture Screenshot via Background
   const screenshotResp = await chrome.runtime.sendMessage({ action: 'CAPTURE_SCREENSHOT' });
   if (!screenshotResp.success) throw new Error("Failed to capture screenshot");
   
-  // 2. Extract DOM
-  // Since we use Scripting API, we inject the function
   const results = await chrome.scripting.executeScript({
     target: { tabId: tabId },
     func: () => {
-      // Inlined exact logic from App.tsx DOM Extractor to keep it decoupled
       const INTERESTING_TAGS = ['INPUT', 'BUTTON', 'A', 'TEXTAREA', 'SELECT', 'LABEL', 'FORM', 'H1', 'H2', 'H3', 'P', 'SPAN', 'DIV'];
       
       function isElementVisible(el: HTMLElement): boolean {
@@ -50,6 +46,10 @@ export async function capturePage(tabId: number): Promise<PageCapture> {
         let role = el.getAttribute('role') || undefined;
         let label = el.getAttribute('aria-label') || el.getAttribute('placeholder') || undefined;
         
+        // Grab structural hints for the privacy engine
+        const nameAttr = el.getAttribute('name') || undefined;
+        const idAttr = el.id || undefined;
+        
         const isInputNode = el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement || el instanceof HTMLSelectElement;
         const isEditable = el.isContentEditable;
         
@@ -72,6 +72,10 @@ export async function capturePage(tabId: number): Promise<PageCapture> {
         if (type) safeElement.type = type;
         if (role) safeElement.role = role;
         if (label) safeElement.label = label;
+        
+        // Pass hints without violating privacy (we are NOT passing .value)
+        if (nameAttr) safeElement.nameHint = nameAttr;
+        if (idAttr) safeElement.idHint = idAttr;
 
         elements.push(safeElement);
       }
@@ -87,14 +91,15 @@ export async function capturePage(tabId: number): Promise<PageCapture> {
     }
   });
 
-  if (!results || !results[0] || !results[0].result) {
-    throw new Error("Failed to extract DOM");
-  }
-
+  if (!results || !results[0] || !results[0].result) throw new Error("Failed to extract DOM");
   const domData = results[0].result as any;
 
+  // Convert Base64 data URL to Blob to satisfy the strict PageCapture interface
+  const res = await fetch(screenshotResp.data.image);
+  const screenshotBlob = await res.blob();
+
   return {
-    screenshot: screenshotResp.data.image,
+    screenshot: screenshotBlob,
     viewport: domData.viewport,
     elements: domData.elements
   };

@@ -1,33 +1,34 @@
 import React, { useState } from 'react';
 import { Shield, ShieldAlert, Zap, Lock, Eye, EyeOff, Activity, Download } from 'lucide-react';
 import { capturePage } from '../capture/page-capture';
-import { RealOCRProvider } from '../vision/ocr';
+import { MockOCRProvider, RealOCRProvider } from '../vision/ocr';
 import { runPrivacyIntelligence } from '../privacy/intelligence';
 import { redactScreenshot } from '../privacy/redactor';
 import { fetchAgentPlan } from '../network/api-client';
 import { PageCapture } from '../shared/types';
 import { sanitizeDOM } from '../privacy/dom-sanitizer'; // keep text sanitization
 
-function injectedActionExecutor(action: any) {
-  const el = action.target?.elementId ? document.querySelector(`[data-agent-id="${action.target.elementId}"]`) as HTMLElement : null;
+function injectedActionExecutor(actionPayload: any) {
+  // Now uses action.element_id and action.action
+  const el = actionPayload.element_id ? document.querySelector(`[data-agent-id="${actionPayload.element_id}"]`) as HTMLElement : null;
 
-  if (action.type === 'click') {
+  if (actionPayload.action === 'click') {
     if (!el) return false;
     el.click();
     return true;
   }
   
-  if (action.type === 'type') {
+  if (actionPayload.action === 'type') {
     if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
-      el.value = action.text;
+      el.value = actionPayload.text;
       el.dispatchEvent(new Event('input', { bubbles: true }));
       el.dispatchEvent(new Event('change', { bubbles: true }));
       return true;
     }
   }
   
-  if (action.type === 'scroll') {
-    const scrollAmount = action.direction === 'down' ? window.innerHeight / 1.5 : -window.innerHeight / 1.5;
+  if (actionPayload.action === 'scroll') {
+    const scrollAmount = actionPayload.direction === 'down' ? window.innerHeight / 1.5 : -window.innerHeight / 1.5;
     window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
     if (document.scrollingElement) {
       document.scrollingElement.scrollBy({ top: scrollAmount, behavior: 'smooth' });
@@ -38,7 +39,7 @@ function injectedActionExecutor(action: any) {
   return false;
 }
 
-function App() {
+export default function App() {
   const [task, setTask] = useState('');
   const [status, setStatus] = useState('Idle');
   const [logs, setLogs] = useState<string[]>([]);
@@ -46,6 +47,7 @@ function App() {
   const [demoMode, setDemoMode] = useState(false);
   const [originalImage, setOriginalImage] = useState<string | null>(null);
   const [sanitizedImage, setSanitizedImage] = useState<string | null>(null);
+  const [ocrEngine, setOcrEngine] = useState<'mock' | 'tesseract'>('mock');
 
   const addLog = (msg: string) => setLogs(prev => [...prev, msg]);
 
@@ -82,18 +84,33 @@ function App() {
         throw new Error("Cannot analyze browser settings pages.");
       }
       
-      addLog('Capturing Page (DOM + Screenshot)...');
+      addLog('Extracting DOM & Capturing Device-Pixel Screenshot...');
       const pageData: PageCapture = await capturePage(tab.id!);
-      setOriginalImage(pageData.screenshot);
+      
+      const objectUrl = URL.createObjectURL(pageData.screenshot);
+      setOriginalImage(objectUrl);
 
-      addLog('Running OCR Mock Interface...');
-      const ocrProvider = new RealOCRProvider();
+      addLog(`Executing Local ML Engine (${ocrEngine === 'mock' ? 'Mock' : 'Tesseract'})...`);
+      const ocrProvider = ocrEngine === 'mock' ? new MockOCRProvider() : new RealOCRProvider();
       const ocrResults = await ocrProvider.runOCR(pageData.screenshot);
 
-      addLog('Fusing Privacy Intelligence...');
-      const privacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults);
+      let externalVisionMocks: any[] = [];
+      if (demoMode) {
+        externalVisionMocks.push({
+          id: 'pr_vision_mock',
+          bbox: { x: 100, y: 100, width: 150, height: 150 },
+          category: 'PERSON',
+          confidence: 0.95,
+          source: 'vision',
+          protection: 'BLUR'
+        });
+        addLog('[Integration Test] Injecting external Vision ML coordinates');
+      }
 
-      addLog(`Redacting ${privacyRegions.length} regions...`);
+      addLog('Running Privacy Intelligence Fusion (DOM + ML)...');
+      const privacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults, externalVisionMocks);
+
+      addLog(`Applying OffscreenCanvas Visual Redaction (${privacyRegions.length} regions)...`);
       const safeImage = await redactScreenshot(pageData.screenshot, privacyRegions, pageData.viewport.devicePixelRatio);
       setSanitizedImage(safeImage);
 
@@ -112,9 +129,9 @@ function App() {
       downloadFile(safeImage, 'screenshot.png', false);
       downloadFile(JSON.stringify(contextJson, null, 2), 'context.json', true);
 
-      setStatus('Analysis Complete. Files downloaded.');
-      addLog('screenshot.png downloaded');
-      addLog('context.json downloaded');
+      setStatus('Analysis Complete. Payloads Exported.');
+      addLog('Exported sanitized screenshot.png payload');
+      addLog('Exported SafeBrowserContext context.json');
     } catch (e: any) {
       console.error(e);
       setStatus('Error');
@@ -133,25 +150,25 @@ function App() {
       const tab = await getActiveTab();
       
       const t0 = performance.now();
-      addLog('Capturing Page...');
+      addLog('Extracting DOM & Capturing Device-Pixel Screenshot...');
       const pageData = await capturePage(tab.id!);
       m['Page Capture'] = Math.round(performance.now() - t0);
 
       const t1 = performance.now();
-      addLog('Mock OCR & Intelligence...');
-      const ocr = new RealOCRProvider();
+      addLog(`Executing Local ML Engine (${ocrEngine === 'mock' ? 'Mock' : 'Tesseract'})...`);
+      const ocr = ocrEngine === 'mock' ? new MockOCRProvider() : new RealOCRProvider();
       const ocrResults = await ocr.runOCR(pageData.screenshot);
       const privacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults);
       m['Intelligence'] = Math.round(performance.now() - t1);
 
       const t2 = performance.now();
-      addLog('Redacting & Sanitizing...');
+      addLog(`Applying OffscreenCanvas Visual Redaction (${privacyRegions.length} regions)...`);
       const safeImage = await redactScreenshot(pageData.screenshot, privacyRegions, pageData.viewport.devicePixelRatio);
       const sanitizedElements = sanitizeDOM(pageData.elements, privacyRegions as any);
       m['Redaction'] = Math.round(performance.now() - t2);
 
       const t3 = performance.now();
-      addLog('Sending safe context to Mock Server...');
+      addLog('Transmitting SafeBrowserContext to Local Server...');
       const plan = await fetchAgentPlan(task, {
         pageTitle: tab.title || "",
         url: tab.url || "",
@@ -160,10 +177,10 @@ function App() {
         sanitizedScreenshot: safeImage
       });
       m['Network'] = Math.round(performance.now() - t3);
-      addLog(`AI Plan: ${plan.reasoning}`);
+      addLog(`VLM Reasoning: ${plan.reasoning}`);
 
       if (plan.actions.length > 0) {
-        addLog(`Executing action: ${plan.actions[0].type}`);
+        addLog(`Autonomous Execution: ${plan.actions[0].action} -> ${(plan.actions[0] as any).element_id || ''}`);
         const t4 = performance.now();
         await chrome.scripting.executeScript({
           target: { tabId: tab.id! },
@@ -208,6 +225,14 @@ function App() {
         </button>
       </div>
       
+      <div style={{ marginBottom: '16px', fontSize: '12px' }}>
+        <label style={{ color: '#94a3b8', marginRight: '8px' }}>OCR Engine:</label>
+        <select value={ocrEngine} onChange={(e) => setOcrEngine(e.target.value as any)} style={{ background: '#1e293b', color: 'white', border: '1px solid #334155', borderRadius: '4px', padding: '4px' }}>
+          <option value="mock">Mock (Fast & Safe)</option>
+          <option value="tesseract">Tesseract.js (Real)</option>
+        </select>
+      </div>
+
       <hr style={{ borderColor: '#334155', marginBottom: '16px' }} />
 
       <div style={{ marginBottom: '16px' }}>
@@ -273,4 +298,4 @@ function App() {
   );
 }
 
-export default App;
+

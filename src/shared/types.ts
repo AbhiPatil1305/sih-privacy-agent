@@ -18,16 +18,17 @@ export interface DOMElement {
   role?: string;
   label?: string;
   text?: string;
+  nameHint?: string;
+  idHint?: string;
   bbox: BoundingBox;
 }
 
 export interface PageCapture {
-  screenshot: string; // Base64 Data URL for now
+  screenshot: Blob;
   viewport: ViewportInfo;
   elements: DOMElement[];
 }
 
-// ---- TEAM 2 (OCR) INTERFACES ----
 export interface OCRResult {
   text: string;
   confidence: number;
@@ -36,19 +37,22 @@ export interface OCRResult {
 }
 
 export interface OCRProvider {
-  runOCR(screenshot: string): Promise<OCRResult[]>;
+  runOCR(screenshot: Blob): Promise<OCRResult[]>;
 }
 
-// ---- PRIVACY INTELLIGENCE INTERFACES ----
+export interface VisionProvider {
+  runVision(screenshot: Blob): Promise<PrivacyRegion[]>;
+}
+
 export interface PrivacyRegion {
   id: string;
-  bbox: BoundingBox;
-  category: "EMAIL" | "PHONE" | "PERSON" | "PASSWORD" | "ADDRESS" | "OTHER";
+  category: string;
   confidence: number;
+  bbox: BoundingBox;
+  source: "dom" | "ocr" | "vision" | "fusion";
   protection: "BLACK" | "BLUR" | "REPLACE";
 }
 
-// ---- AGENT INTERFACES ----
 export interface VisionObject {
   id: string;
   label: string;
@@ -58,7 +62,7 @@ export interface VisionObject {
 export interface SafeBrowserContext {
   pageTitle: string;
   url: string;
-  sanitizedScreenshot?: string;
+  sanitizedScreenshot?: string; 
   sanitizedDOM: {
     viewport: ViewportInfo;
     elements: DOMElement[];
@@ -68,10 +72,9 @@ export interface SafeBrowserContext {
 }
 
 export type AgentAction =
-  | { type: 'click'; target: { elementId: string } }
-  | { type: 'type'; target: { elementId: string }; text: string }
-  | { type: 'scroll'; direction: 'up' | 'down' }
-  | { type: 'navigate'; url: string }
-  | { type: 'select'; target: { elementId: string }; value: string }
-  | { type: 'wait'; duration: number };
-
+  | { action: 'click'; element_id: string }
+  | { action: 'type'; element_id: string; text: string }
+  | { action: 'scroll'; direction: 'up' | 'down' }
+  | { action: 'navigate'; url: string }
+  | { action: 'select'; element_id: string; value: string }
+  | { action: 'wait'; duration: number };
