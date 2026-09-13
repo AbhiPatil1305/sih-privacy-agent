@@ -1,115 +1,115 @@
-# SIH 2026: Privacy-Preserving Browser Agent
+# 🛡️ Privacy-Preserving Browser Agent
 
-**Problem Statement 26171**
+**Smart India Hackathon (SIH) Prototype - Problem Statement 26171**  
+*“On-device Visual Perception for Light-weight Browser Agents”*
 
-This repository contains the **Integration Layer (Team 1)** of our privacy-preserving browser extension. It acts as the "eyes and hands" of our AI system, capturing the user's screen and DOM, strictly filtering out personal data, sending clean data to the AI Brain, and physically executing the AI's actions.
-
-## 🚀 Key Features
-
-* **Advanced DOM Extraction**: Maps the physical coordinates (`x, y, width, height`) of every visible semantic element on the page.
-* **Smart Geometric Deduplication**: Automatically filters out invisible, overlapping `<div>` wrappers to provide the ML team with clean, semantic data.
-* **Local Privacy Engine**: Uses Regex to scrub PII (Emails, Phone Numbers) from the DOM text, and entirely ignores user-typed `value` fields.
-* **On-Device Vision (OCR)**: Integrates `Tesseract.js` locally to physically read text off the screenshot pixels without sending images to the cloud.
-* **Privacy Fusion Layer**: Cross-references DOM and OCR signals to generate highly accurate visual redaction boxes.
-* **Visual Redactor**: Uses `OffscreenCanvas` to physically paint black boxes over sensitive data on the screenshot image *before* it leaves the browser.
-* **Coordinate Alignment**: Uses `devicePixelRatio` scaling to ensure CSS DOM coordinates perfectly overlap with high-resolution image device pixels.
-* **Action Executor**: Accepts structured commands (e.g., `click`, `scroll`, `type`) and autonomously drives the browser.
+This repository contains a production-ready MVP for a privacy-first browser agent implemented as a Chrome Extension. The architecture is explicitly designed to act as a secure, local intermediary between the user's browser and any external AI/VLM backend, ensuring that raw sensitive information is never transmitted over the network.
 
 ---
 
-## 🛠️ Installation & Setup
+## 🛠️ Core Upgrades for ML Integration (Team 2 & Vision)
 
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+We have fully decoupled the extension's core features to allow seamless, plug-and-play integration for the Machine Learning and Backend teams.
 
-2. **Build the Extension**
-   ```bash
-   npm run build
-   ```
-
-3. **Load into Chrome**
-   * Go to `chrome://extensions/`
-   * Enable **Developer mode**
-   * Click **Load unpacked**
-   * Select the `/dist` folder inside this project directory.
-
-4. **Test the Demo**
-   * Open the extension side panel on any webpage.
-   * Click **Unified Capture (ML Export)** to capture the DOM, run local OCR, and preview the dynamically redacted screenshot.
-   * Type a command like `"scroll down"` and click **Execute Task** to test the Action Executor.
+* **Secure Memory Blobs:** The raw screenshot is now explicitly handled as a `Blob` in memory rather than a massive Base64 string, preventing accidental data leaks and optimizing performance for local models.
+* **Pluggable OCR Interface:** The OCR engine is strictly abstracted behind the `OCRProvider` interface. Team 2 can swap out the default Tesseract engine for their lightweight `PP-OCRv6 Tiny` model with a single line of code.
+* **External Privacy Injection:** The Privacy Redaction Engine now blindly accepts spatial coordinates (`PrivacyRegion[]`) from *any* source (DOM, OCR, or External Vision Models) and physically paints over the image.
+* **Strict Server Boundaries:** The API layer is locked behind TypeScript's `SafeBrowserContext`. It is physically impossible to transmit a raw screenshot to the backend server.
+* **Standardized Action Execution:** The action executor has been standardized to accept strict JSON payloads (e.g., `{"action": "click", "element_id": "el_014"}`). The browser handles the execution locally, completely preventing arbitrary JavaScript execution (`eval()`) from the cloud.
 
 ---
 
-## 🧩 Architecture & Core Modules
+## 💻 How to Use the Extension
 
-### 1. Unified Capture API (`src/capture/page-capture.ts`)
-The single entry point for capturing the page. It calls the DOM Extractor script and takes a screenshot, returning a unified `PageCapture` object.
-
-### 2. Privacy Intelligence (`src/privacy/intelligence.ts`)
-The "Fusion Center". It takes raw `DOMElement[]` and `OCRResult[]` arrays, detects sensitive data, applies **Geometric Filtering** to prevent layout destruction from massive wrapper elements, and outputs precise `PrivacyRegion[]` boxes.
-
-### 3. Redaction Engine (`src/privacy/redactor.ts`)
-Takes an array of `PrivacyRegion` boxes, scales them to the physical image using the screen's `devicePixelRatio`, and paints irreversible black boxes on the image using an HTML5 `OffscreenCanvas`.
+1.  **Open the Dashboard**: Click the extension icon in your Chrome toolbar to open the Side Panel.
+2.  **Toggle the OCR Engine**: Use the dropdown menu to select your engine:
+    *   **Mock (Fast & Safe)**: Bypasses heavy ML processing to guarantee a crash-free demo presentation. (Runs in < 2 seconds).
+    *   **Tesseract.js (Real)**: Executes the actual local OCR engine against the screenshot pixels.
+3.  **For the ML Team (Unified Capture)**: 
+    *   Click **"Unified Capture (ML Export)"**. 
+    *   The extension will map the screen, physically redact PII from the image (via DOM/OCR fusion), scrub PII from the text, and generate the final `context.json`.
+4.  **For the Integration Test (Demo Mode)**: 
+    *   Toggle the **"Demo"** button in the top right.
+    *   When you capture the page, the system will inject a simulated "Vision Model Detection" (e.g., a fake face detection) directly into the pipeline to prove that the Redaction Engine successfully accepts and blurs external coordinates!
+5.  **For the AI Demo (Execute Task)**: 
+    *   Type a simple natural language command into the input box (e.g., `"scroll down"` or `"type abhi"`).
+    *   Hit **Execute Task**. The local dummy-brain will parse the command into strict JSON and drive the browser autonomously!
 
 ---
 
-## 📜 Shared TypeScript Interfaces (For ML Teams)
+## 📜 Team Contracts & Interfaces (src/shared/types.ts)
 
-The following interfaces are defined in `src/shared/types.ts` and represent the standardized data contracts between the Extension and the AI Model.
+The following TypeScript interfaces are the strict contracts that Team 2 (Vision/OCR) and the Backend Team must build against.
 
+### 1. The Raw Capture (Browser Internal)
 ```typescript
-export interface BoundingBox {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
+interface PageCapture {
+  screenshot: Blob; // Handled securely in memory
+  viewport: {
+    width: number;
+    height: number;
+    devicePixelRatio: number;
+  };
+  elements: DOMElement[]; // Contains stable 'id' for action execution
+}
+```
+
+### 2. Team 2: Pluggable OCR & Vision
+Team 2 must implement these exact interfaces for their models to plug into the extension.
+```typescript
+interface OCRProvider {
+  runOCR(screenshot: Blob): Promise<OCRResult[]>;
 }
 
-export interface ViewportInfo {
-  width: number;
-  height: number;
-  devicePixelRatio: number;
+interface VisionProvider {
+  runVision(screenshot: Blob): Promise<PrivacyRegion[]>;
 }
+```
 
-// Cleaned, safe DOM element
-export interface DOMElement {
+### 3. The Privacy Redaction Engine
+Any ML model can command the extension to redact a portion of the screen by providing an array of this object.
+```typescript
+interface PrivacyRegion {
   id: string;
-  tag: string;
-  type?: string;
-  role?: string;
-  label?: string; // Text is sanitized here (e.g. "[REDACTED_EMAIL]")
-  bbox: BoundingBox;
-}
-
-// Vision team output
-export interface OCRResult {
-  text: string;
+  category: string;
   confidence: number;
-  bbox: BoundingBox;
-}
-
-// Final Redaction Box
-export interface PrivacyRegion {
-  id: string;
-  bbox: BoundingBox;
-  category: "EMAIL" | "PHONE" | "PERSON" | "PASSWORD" | "OTHER";
+  bbox: { x: number, y: number, width: number, height: number };
+  source: "dom" | "ocr" | "vision" | "fusion"; // Tracks where the detection came from
   protection: "BLACK" | "BLUR" | "REPLACE";
 }
+```
 
-// The unified payload sent to the Backend/VLM
-export interface SafeBrowserContext {
+### 4. The Strict Server Boundary
+This is the ONLY data payload that the Backend/VLM server will ever receive. Notice that the raw screenshot is completely omitted.
+```typescript
+interface SafeBrowserContext {
   pageTitle: string;
   url: string;
-  sanitizedScreenshot?: string;
+  sanitizedScreenshot?: string; // The physically redacted image
   sanitizedDOM: {
     viewport: ViewportInfo;
-    elements: DOMElement[];
+    elements: DOMElement[]; // Text values are scrubbed (e.g. "[REDACTED_EMAIL]")
   };
   visibleElements: DOMElement[];
 }
 ```
 
----
-*Built for SIH 2026.*
+### 5. The Action Payload
+The Backend VLM must respond with an array of actions strictly matching this JSON structure. The extension will parse the `element_id` and execute the action locally.
+```json
+{
+  "action": "click",
+  "element_id": "el_014"
+}
+// OR
+{
+  "action": "type",
+  "element_id": "el_001",
+  "text": "abhi"
+}
+// OR
+{
+  "action": "scroll",
+  "direction": "down"
+}
+```
