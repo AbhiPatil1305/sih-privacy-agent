@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Shield, ShieldAlert, Zap, Lock, Eye, EyeOff, Activity, Download } from 'lucide-react';
 import { capturePage } from '../capture/page-capture';
 import { MockOCRProvider, RealOCRProvider } from '../vision/ocr';
+import { runTeam2Perception } from '../integration/team2-perception';
 import { runPrivacyIntelligence } from '../privacy/intelligence';
 import { redactScreenshot } from '../privacy/redactor';
 import { fetchAgentPlan } from '../network/api-client';
@@ -47,7 +48,7 @@ export default function App() {
   const [demoMode, setDemoMode] = useState(false);
   const [originalImage, setOriginalImage] = useState<string | null>(null);
   const [sanitizedImage, setSanitizedImage] = useState<string | null>(null);
-  const [ocrEngine, setOcrEngine] = useState<'mock' | 'tesseract'>('mock');
+  const [ocrEngine, setOcrEngine] = useState<'mock' | 'tesseract' | 'ppocr'>('ppocr');
 
   const addLog = (msg: string) => setLogs(prev => [...prev, msg]);
 
@@ -78,6 +79,8 @@ export default function App() {
   const analyzePage = async () => {
     setStatus('Analyzing Page...');
     setLogs([]);
+    // Performance metrics container
+    const m: { [key: string]: number } = {};
     try {
       const tab = await getActiveTab();
       if (tab.url?.startsWith('chrome://') || tab.url?.startsWith('edge://')) {
@@ -89,10 +92,52 @@ export default function App() {
       
       const objectUrl = URL.createObjectURL(pageData.screenshot);
       setOriginalImage(objectUrl);
+      let privacyRegionsForRedaction: any[] = [];
 
-      addLog(`Executing Local ML Engine (${ocrEngine === 'mock' ? 'Mock' : 'Tesseract'})...`);
-      const ocrProvider = ocrEngine === 'mock' ? new MockOCRProvider() : new RealOCRProvider();
-      const ocrResults = await ocrProvider.runOCR(pageData.screenshot);
+      if (ocrEngine === 'ppocr') {
+        addLog('Executing Local ML Engine (PP-OCRv6 + YOLO11n + RetinaFace)...');
+        const perception = await runTeam2Perception(pageData.screenshot, 'webgpu');
+        const { ocrResults, privacyRegions, faces, objects, metadata } = perception;
+
+        addLog(`PP-OCRv6: ${ocrResults.length} text regions detected`);
+
+        addLog(`RetinaFace: ${faces.length} face regions detected`);
+        faces.forEach((face, idx) => {
+          addLog(`  Face ${idx + 1}: confidence=${face.confidence.toFixed(2)} bbox=(${Math.round(face.bbox.x)},${Math.round(face.bbox.y)},${Math.round(face.bbox.width)},${Math.round(face.bbox.height)})`);
+        });
+
+        addLog(`YOLO11n: ${objects.length} objects detected`);
+        objects.forEach((obj, idx) => {
+          addLog(`  Object ${idx + 1}: ${obj.label} classId=${obj.classId} confidence=${obj.confidence.toFixed(2)} bbox=(${Math.round(obj.bbox.x)},${Math.round(obj.bbox.y)},${Math.round(obj.bbox.width)},${Math.round(obj.bbox.height)})`);
+        });
+
+        addLog(`Model Timing: total=${Math.round(metadata.totalMs)}ms (OCR: ${Math.round(metadata.detectionMs + metadata.recognitionMs)}ms [det:${Math.round(metadata.detectionMs)}ms, rec:${Math.round(metadata.recognitionMs)}ms], YOLO: ${Math.round(metadata.objectInferenceMs)}ms, RetinaFace: ${Math.round(metadata.faceInferenceMs)}ms) [${metadata.executionProvider}]`);
+
+        const combinedPrivacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults, privacyRegions);
+        privacyRegionsForRedaction = combinedPrivacyRegions;
+
+        const catCounts: Record<string, number> = {};
+        const sourceCounts: Record<string, number> = { vision: 0, ocr: 0, dom: 0 };
+        for (const r of combinedPrivacyRegions) {
+          catCounts[r.category] = (catCounts[r.category] || 0) + 1;
+          const src = (r.source || 'other').toLowerCase();
+          sourceCounts[src] = (sourceCounts[src] || 0) + 1;
+        }
+
+        addLog('Privacy Intelligence:');
+        addLog(`  Total regions: ${combinedPrivacyRegions.length}`);
+        for (const [cat, count] of Object.entries(catCounts)) {
+          addLog(`  ${cat}: ${count}`);
+        }
+        addLog(`  Sources: vision=${sourceCounts.vision || 0}, ocr=${sourceCounts.ocr || 0}, dom=${sourceCounts.dom || 0}`);
+      } else {
+        addLog(`Executing Local ML Engine (${ocrEngine === 'mock' ? 'Mock' : 'Tesseract'})...`);
+        const ocr = ocrEngine === 'mock' ? new MockOCRProvider() : new RealOCRProvider();
+        const ocrResults = await ocr.runOCR(pageData.screenshot);
+        const privacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults);
+        privacyRegionsForRedaction = privacyRegions;
+      }
+
 
       let externalVisionMocks: any[] = [];
       if (demoMode) {
@@ -108,14 +153,18 @@ export default function App() {
       }
 
       addLog('Running Privacy Intelligence Fusion (DOM + ML)...');
-      const privacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults, externalVisionMocks);
-
-      addLog(`Applying OffscreenCanvas Visual Redaction (${privacyRegions.length} regions)...`);
-      const safeImage = await redactScreenshot(pageData.screenshot, privacyRegions, pageData.viewport.devicePixelRatio);
+      if (ocrEngine === 'ppocr') {
+        addLog('Redaction:');
+        addLog(`  Regions passed: ${privacyRegionsForRedaction.length}`);
+      }
+      const safeImage = await redactScreenshot(pageData.screenshot, privacyRegionsForRedaction, pageData.viewport.devicePixelRatio);
       setSanitizedImage(safeImage);
+      if (ocrEngine === 'ppocr' && safeImage) {
+        addLog('  Sanitized screenshot: exported successfully');
+      }
 
       // Text sanitization based on regions
-      const sanitizedElements = sanitizeDOM(pageData.elements, privacyRegions as any);
+      const sanitizedElements = sanitizeDOM(pageData.elements, privacyRegionsForRedaction as any);
 
       const contextJson = {
         viewport: pageData.viewport,
@@ -144,6 +193,8 @@ export default function App() {
     setStatus('Running Pipeline...');
     setLogs([]);
     const m: Record<string, number> = {};
+    // Initialize redaction regions container
+    let privacyRegionsForRedaction: any[] = [];
     const startTotal = performance.now();
 
     try {
@@ -159,12 +210,13 @@ export default function App() {
       const ocr = ocrEngine === 'mock' ? new MockOCRProvider() : new RealOCRProvider();
       const ocrResults = await ocr.runOCR(pageData.screenshot);
       const privacyRegions = runPrivacyIntelligence(pageData.elements, ocrResults);
-      m['Intelligence'] = Math.round(performance.now() - t1);
+      privacyRegionsForRedaction = privacyRegions;
+   
 
       const t2 = performance.now();
-      addLog(`Applying OffscreenCanvas Visual Redaction (${privacyRegions.length} regions)...`);
-      const safeImage = await redactScreenshot(pageData.screenshot, privacyRegions, pageData.viewport.devicePixelRatio);
-      const sanitizedElements = sanitizeDOM(pageData.elements, privacyRegions as any);
+      addLog(`Applying OffscreenCanvas Visual Redaction (${privacyRegionsForRedaction.length} regions)...`);
+      const safeImage = await redactScreenshot(pageData.screenshot, privacyRegionsForRedaction, pageData.viewport.devicePixelRatio);
+      const sanitizedElements = sanitizeDOM(pageData.elements, privacyRegionsForRedaction as any);
       m['Redaction'] = Math.round(performance.now() - t2);
 
       const t3 = performance.now();
@@ -230,6 +282,7 @@ export default function App() {
         <select value={ocrEngine} onChange={(e) => setOcrEngine(e.target.value as any)} style={{ background: '#1e293b', color: 'white', border: '1px solid #334155', borderRadius: '4px', padding: '4px' }}>
           <option value="mock">Mock (Fast & Safe)</option>
           <option value="tesseract">Tesseract.js (Real)</option>
+          <option value="ppocr">PP-OCRv6 + Vision (On-device)</option>
         </select>
       </div>
 
