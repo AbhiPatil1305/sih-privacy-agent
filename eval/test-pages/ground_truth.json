@@ -1,0 +1,79 @@
+{
+  "page_01_email.html": {
+    "name": "Email PII Benchmark Page",
+    "expected_pii": [
+      { "category": "EMAIL", "target": "alex.morris@sih2024.org", "source": "dom" },
+      { "category": "EMAIL", "target": "recovery.alex@gmail.com", "source": "dom" },
+      { "category": "EMAIL", "target": "support@sih-privacy.in", "source": "ocr" }
+    ],
+    "expected_non_pii_count": 4,
+    "expected_faces": 0
+  },
+  "page_02_phone.html": {
+    "name": "Phone Number PII Benchmark Page",
+    "expected_pii": [
+      { "category": "PHONE", "target": "+91-9876543210", "source": "dom" },
+      { "category": "PHONE", "target": "123-456-7890", "source": "dom" },
+      { "category": "PHONE", "target": "+1 (800) 555-0199", "source": "ocr" }
+    ],
+    "expected_non_pii_count": 4,
+    "expected_faces": 0
+  },
+  "page_03_password.html": {
+    "name": "Password & Secret Tokens Benchmark Page",
+    "expected_pii": [
+      { "category": "PASSWORD", "target": "SuperSecretP@ss123", "source": "dom" },
+      { "category": "PASSWORD", "target": "sk_live_998877665544332211", "source": "dom" }
+    ],
+    "expected_non_pii_count": 3,
+    "expected_faces": 0
+  },
+  "page_04_credit_card.html": {
+    "name": "Credit Card PII Benchmark Page",
+    "expected_pii": [
+      { "category": "OTHER", "target": "4532 1234 5678 9012", "source": "dom" },
+      { "category": "OTHER", "target": "5412751234123456", "source": "ocr" }
+    ],
+    "expected_non_pii_count": 3,
+    "expected_faces": 0
+  },
+  "page_05_ssn.html": {
+    "name": "SSN & National ID Benchmark Page",
+    "expected_pii": [
+      { "category": "OTHER", "target": "123-45-6789", "source": "dom" },
+      { "category": "OTHER", "target": "987-65-4321", "source": "ocr" }
+    ],
+    "expected_non_pii_count": 3,
+    "expected_faces": 0
+  },
+  "page_06_faces.html": {
+    "name": "Face Detection Benchmark Page",
+    "expected_pii": [],
+    "expected_non_pii_count": 4,
+    "expected_faces": 2
+  },
+  "page_07_normal_text.html": {
+    "name": "Normal Text Baseline Page",
+    "expected_pii": [],
+    "expected_non_pii_count": 6,
+    "expected_faces": 0
+  },
+  "page_08_no_pii.html": {
+    "name": "Neutral Layout Page (No PII)",
+    "expected_pii": [],
+    "expected_non_pii_count": 4,
+    "expected_faces": 0
+  },
+  "page_09_all_combined.html": {
+    "name": "All PII Combined Stress Test Page",
+    "expected_pii": [
+      { "category": "EMAIL", "target": "combined.test@sih.org", "source": "dom" },
+      { "category": "PHONE", "target": "+91-9988776655", "source": "dom" },
+      { "category": "PASSWORD", "target": "P@ssword2024!", "source": "dom" },
+      { "category": "OTHER", "target": "4111 2222 3333 4444", "source": "dom" },
+      { "category": "OTHER", "target": "456-78-9012", "source": "dom" }
+    ],
+    "expected_non_pii_count": 5,
+    "expected_faces": 1
+  }
+}

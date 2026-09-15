@@ -1,0 +1,245 @@
+[
+  {
+    "pageFile": "page_01_email.html",
+    "pageName": "Email PII Benchmark Page",
+    "metrics": {
+      "piiPrecision": 0.6,
+      "piiRecall": 1,
+      "piiF1": 0.7499999999999999,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 3,
+      "falsePositives": 2,
+      "falseNegatives": 0,
+      "trueNegatives": 4
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.54,
+      "privacyIntelligenceLatencyMs": 0.95,
+      "ocrLatencyMs": 0.1,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 1.6,
+      "memoryUsageMb": 1.52,
+      "cpuTimeMs": 2.76
+    }
+  },
+  {
+    "pageFile": "page_02_phone.html",
+    "pageName": "Phone Number PII Benchmark Page",
+    "metrics": {
+      "piiPrecision": 0.6,
+      "piiRecall": 1,
+      "piiF1": 0.7499999999999999,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 3,
+      "falsePositives": 2,
+      "falseNegatives": 0,
+      "trueNegatives": 4
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.04,
+      "privacyIntelligenceLatencyMs": 0.02,
+      "ocrLatencyMs": 0.01,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 0.08,
+      "memoryUsageMb": 1.46,
+      "cpuTimeMs": 0.08
+    }
+  },
+  {
+    "pageFile": "page_03_password.html",
+    "pageName": "Password & Secret Tokens Benchmark Page",
+    "metrics": {
+      "piiPrecision": 0.4,
+      "piiRecall": 1,
+      "piiF1": 0.5714285714285715,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 2,
+      "falsePositives": 3,
+      "falseNegatives": 0,
+      "trueNegatives": 3
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.11,
+      "privacyIntelligenceLatencyMs": 0.03,
+      "ocrLatencyMs": 0,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 0.15,
+      "memoryUsageMb": 1.46,
+      "cpuTimeMs": 0.15
+    }
+  },
+  {
+    "pageFile": "page_04_credit_card.html",
+    "pageName": "Credit Card PII Benchmark Page",
+    "metrics": {
+      "piiPrecision": 0.4,
+      "piiRecall": 1,
+      "piiF1": 0.5714285714285715,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 2,
+      "falsePositives": 3,
+      "falseNegatives": 0,
+      "trueNegatives": 3
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.06,
+      "privacyIntelligenceLatencyMs": 0.03,
+      "ocrLatencyMs": 0.01,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 0.09,
+      "memoryUsageMb": 1.46,
+      "cpuTimeMs": 0.1
+    }
+  },
+  {
+    "pageFile": "page_05_ssn.html",
+    "pageName": "SSN & National ID Benchmark Page",
+    "metrics": {
+      "piiPrecision": 0.6666666666666666,
+      "piiRecall": 1,
+      "piiF1": 0.8,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 2,
+      "falsePositives": 1,
+      "falseNegatives": 0,
+      "trueNegatives": 3
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.02,
+      "privacyIntelligenceLatencyMs": 0.09,
+      "ocrLatencyMs": 0.01,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 0.12,
+      "memoryUsageMb": 1.46,
+      "cpuTimeMs": 0.12
+    }
+  },
+  {
+    "pageFile": "page_06_faces.html",
+    "pageName": "Face Detection Benchmark Page",
+    "metrics": {
+      "piiPrecision": 1,
+      "piiRecall": 1,
+      "piiF1": 1,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "trueNegatives": 4
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.04,
+      "privacyIntelligenceLatencyMs": 0.01,
+      "ocrLatencyMs": 0.01,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 0.06,
+      "memoryUsageMb": 1.46,
+      "cpuTimeMs": 0.07
+    }
+  },
+  {
+    "pageFile": "page_07_normal_text.html",
+    "pageName": "Normal Text Baseline Page",
+    "metrics": {
+      "piiPrecision": 1,
+      "piiRecall": 1,
+      "piiF1": 1,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "trueNegatives": 6
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.01,
+      "privacyIntelligenceLatencyMs": 0.01,
+      "ocrLatencyMs": 0,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 0.02,
+      "memoryUsageMb": 1.46,
+      "cpuTimeMs": 0.02
+    }
+  },
+  {
+    "pageFile": "page_08_no_pii.html",
+    "pageName": "Neutral Layout Page (No PII)",
+    "metrics": {
+      "piiPrecision": 1,
+      "piiRecall": 1,
+      "piiF1": 1,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "trueNegatives": 4
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.01,
+      "privacyIntelligenceLatencyMs": 0,
+      "ocrLatencyMs": 0,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 0.02,
+      "memoryUsageMb": 1.46,
+      "cpuTimeMs": 0.02
+    }
+  },
+  {
+    "pageFile": "page_09_all_combined.html",
+    "pageName": "All PII Combined Stress Test Page",
+    "metrics": {
+      "piiPrecision": 0.8333333333333334,
+      "piiRecall": 1,
+      "piiF1": 0.9090909090909091,
+      "redactionIoU": 1,
+      "visualDetectionAccuracy": 1,
+      "ocrAccuracyChar": 1,
+      "ocrAccuracyWord": 1,
+      "truePositives": 5,
+      "falsePositives": 1,
+      "falseNegatives": 0,
+      "trueNegatives": 5
+    },
+    "performance": {
+      "domParsingLatencyMs": 0.02,
+      "privacyIntelligenceLatencyMs": 0.02,
+      "ocrLatencyMs": 0.01,
+      "visionLatencyMs": 1.2,
+      "redactionLatencyMs": 0,
+      "endToEndLatencyMs": 0.05,
+      "memoryUsageMb": 1.47,
+      "cpuTimeMs": 0.05
+    }
+  }
+]

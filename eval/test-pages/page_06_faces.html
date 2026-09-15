@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Page 06 - Face Visual Detection</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f4f6f8; }
+    .card { background: white; padding: 20px; border-radius: 8px; max-width: 500px; margin: 0 auto; text-align: center; }
+    .avatar { width: 120px; height: 120px; border-radius: 50%; background: #0284c7; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar" id="face-avatar" data-vision-label="face">AM</div>
+    <h3>Alex Morris</h3>
+    <p>Senior AI Researcher & Team Lead</p>
+    <div id="secondary-face" data-vision-label="face" style="width:100px; height:100px; background:#475569; border-radius:50%; margin:10px auto;"></div>
+    <button type="button" id="view-profile">View Full Profile</button>
+  </div>
+</body>
+</html>
