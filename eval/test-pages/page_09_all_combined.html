@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Page 09 - All PII Combined Stress Test</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f8fafc; }
+    .card { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0 auto; }
+    .form-group { margin-bottom: 12px; }
+    label { font-weight: bold; display: block; margin-bottom: 4px; }
+    input { width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; }
+    .face-box { width: 80px; height: 80px; border-radius: 50%; background: #0284c7; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Complete User Checkout & Identity Verification</h2>
+    <div class="face-box" id="user-face" data-vision-label="face"></div>
+    
+    <div class="form-group">
+      <label for="comb-email">Email Address</label>
+      <input type="email" id="comb-email" name="user_email" value="combined.test@sih.org">
+    </div>
+
+    <div class="form-group">
+      <label for="comb-phone">Phone Number</label>
+      <input type="tel" id="comb-phone" name="phone_number" value="+91-9988776655">
+    </div>
+
+    <div class="form-group">
+      <label for="comb-pass">Account Password</label>
+      <input type="password" id="comb-pass" name="password_field" value="P@ssword2024!">
+    </div>
+
+    <div class="form-group">
+      <label for="comb-card">Payment Card</label>
+      <input type="text" id="comb-card" name="card_number" value="4111 2222 3333 4444">
+    </div>
+
+    <div class="form-group">
+      <label for="comb-ssn">SSN / Identification</label>
+      <input type="text" id="comb-ssn" name="ssn_number" value="456-78-9012">
+    </div>
+
+    <p>Non-sensitive terms & conditions statement: By proceeding you agree to privacy terms.</p>
+    <button type="button" id="complete-checkout">Complete Checkout</button>
+  </div>
+</body>
+</html>
