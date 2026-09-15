@@ -71,10 +71,62 @@ export interface SafeBrowserContext {
   detectedObjects?: VisionObject[];
 }
 
-export type AgentAction =
-  | { action: 'click'; element_id: string }
-  | { action: 'type'; element_id: string; text: string }
-  | { action: 'scroll'; direction: 'up' | 'down' }
-  | { action: 'navigate'; url: string }
-  | { action: 'select'; element_id: string; value: string }
-  | { action: 'wait'; duration: number };
+// --- NEW STANDARD ACTION TYPES ---
+
+export type BrowserAction =
+  | ClickAction
+  | TypeAction
+  | ScrollAction
+  | SelectAction
+  | WaitAction
+  | NavigateAction;
+
+export interface ClickAction {
+  action: "click";
+  element_id: string;
+}
+
+export interface TypeAction {
+  action: "type";
+  element_id: string;
+  text: string;
+}
+
+export interface ScrollAction {
+  action: "scroll";
+  direction: "up" | "down";
+  amount?: number;
+}
+
+export interface SelectAction {
+  action: "select";
+  element_id: string;
+  value: string;
+}
+
+export interface WaitAction {
+  action: "wait";
+  duration: number;
+}
+
+export interface NavigateAction {
+  action: "navigate";
+  url: string;
+}
+
+export interface ActionResult {
+  success: boolean;
+  action: string;
+  element_id?: string;
+  error?: string;
+  timestamp?: number;
+}
+
+export interface ValidationResult {
+  valid: boolean;
+  error?: string;
+}
+
+export interface ActionProvider {
+  getAction(task: string, context: SafeBrowserContext): Promise<{ actions: BrowserAction[], reasoning: string }>;
+}

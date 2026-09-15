@@ -4,39 +4,99 @@ import { capturePage } from '../capture/page-capture';
 import { MockOCRProvider, RealOCRProvider } from '../vision/ocr';
 import { runPrivacyIntelligence } from '../privacy/intelligence';
 import { redactScreenshot } from '../privacy/redactor';
-import { fetchAgentPlan } from '../network/api-client';
+import { MockActionProvider } from '../network/api-client';
 import { PageCapture } from '../shared/types';
 import { sanitizeDOM } from '../privacy/dom-sanitizer'; // keep text sanitization
 
-function injectedActionExecutor(actionPayload: any) {
-  // Now uses action.element_id and action.action
-  const el = actionPayload.element_id ? document.querySelector(`[data-agent-id="${actionPayload.element_id}"]`) as HTMLElement : null;
 
-  if (actionPayload.action === 'click') {
-    if (!el) return false;
-    el.click();
-    return true;
+
+// Inline action executor to guarantee execution without content script listeners
+function injectedActionExecutor(action: any): any {
+  function validate(act: any) {
+    if (!act || !act.action) return { valid: false, error: 'Malformed action' };
+    if (!['click', 'type', 'scroll', 'select', 'wait', 'navigate'].includes(act.action)) return { valid: false, error: 'Unsupported action' };
+    
+    if (act.action === 'navigate') {
+      try {
+        const url = new URL(act.url);
+        if (url.protocol === 'javascript:' || url.protocol === 'data:' || url.protocol === 'vbscript:') return { valid: false, error: 'Unsafe URL' };
+      } catch { return { valid: false, error: 'Unsafe URL' }; }
+      return { valid: true };
+    }
+    
+    if (['click', 'type', 'select'].includes(act.action)) {
+      if (!act.element_id) return { valid: false, error: 'Missing element_id' };
+      const el = document.querySelector(`[data-agent-id="${act.element_id}"]`) as HTMLElement;
+      if (!el) return { valid: false, error: 'Element not found' };
+      
+      const style = window.getComputedStyle(el);
+      if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') return { valid: false, error: 'Element not visible' };
+      
+      const rect = el.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return { valid: false, error: 'Element not visible' };
+      if ((el as any).disabled) return { valid: false, error: 'Element is disabled' };
+    }
+    return { valid: true };
   }
-  
-  if (actionPayload.action === 'type') {
-    if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
-      el.value = actionPayload.text;
-      el.dispatchEvent(new Event('input', { bubbles: true }));
+
+  const val = validate(action);
+  if (!val.valid) return { success: false, error: val.error };
+
+  try {
+    if (action.action === 'click') {
+      const el = document.querySelector(`[data-agent-id="${action.element_id}"]`) as HTMLElement;
+      el.click();
+      return { success: true };
+    }
+    
+    if (action.action === 'type') {
+      const el = document.querySelector(`[data-agent-id="${action.element_id}"]`) as HTMLElement;
+      if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
+        el.value = action.text;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+      } else if (el.isContentEditable) {
+        el.innerText = action.text;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      return { success: true };
+    }
+    
+    if (action.action === 'scroll') {
+      const amt = Math.min(action.amount || 600, 5000);
+      const scrollAmt = action.direction === 'down' ? amt : -amt;
+      window.scrollBy({ top: scrollAmt, behavior: 'smooth' });
+      return { success: true };
+    }
+    
+    if (action.action === 'select') {
+      const el = document.querySelector(`[data-agent-id="${action.element_id}"]`) as HTMLSelectElement;
+      let found = false;
+      for (let i = 0; i < el.options.length; i++) {
+        if (el.options[i].value === action.value || el.options[i].text === action.value) {
+          el.selectedIndex = i; found = true; break;
+        }
+      }
+      if (!found) return { success: false, error: 'Option not found' };
       el.dispatchEvent(new Event('change', { bubbles: true }));
-      return true;
+      return { success: true };
     }
-  }
-  
-  if (actionPayload.action === 'scroll') {
-    const scrollAmount = actionPayload.direction === 'down' ? window.innerHeight / 1.5 : -window.innerHeight / 1.5;
-    window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
-    if (document.scrollingElement) {
-      document.scrollingElement.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+    
+    if (action.action === 'wait') {
+      // Async wait inside executeScript is tricky to serialize properly back to popup, 
+      // but we can just sleep synchronously or handle it via Promises if manifest v3 allows.
+      // Better to handle wait asynchronously outside the injected script, or return a signal to wait.
+      return { success: true, wait_duration: action.duration };
     }
-    return true;
+    
+    if (action.action === 'navigate') {
+      window.location.href = action.url;
+      return { success: true };
+    }
+  } catch (e: any) {
+    return { success: false, error: e.message };
   }
-
-  return false;
+  return { success: false, error: 'Unknown execution error' };
 }
 
 export default function App() {
@@ -169,7 +229,8 @@ export default function App() {
 
       const t3 = performance.now();
       addLog('Transmitting SafeBrowserContext to Local Server...');
-      const plan = await fetchAgentPlan(task, {
+      const actionProvider = new MockActionProvider();
+      const plan = await actionProvider.getAction(task, {
         pageTitle: tab.title || "",
         url: tab.url || "",
         sanitizedDOM: { viewport: pageData.viewport, elements: sanitizedElements },
@@ -180,14 +241,30 @@ export default function App() {
       addLog(`VLM Reasoning: ${plan.reasoning}`);
 
       if (plan.actions.length > 0) {
-        addLog(`Autonomous Execution: ${plan.actions[0].action} -> ${(plan.actions[0] as any).element_id || ''}`);
         const t4 = performance.now();
-        await chrome.scripting.executeScript({
-          target: { tabId: tab.id! },
-          func: injectedActionExecutor,
-          args: [plan.actions[0]]
-        });
+        for (const action of plan.actions) {
+          addLog(`Autonomous Execution: ${action.action} -> ${(action as any).element_id || ''}`);
+          
+          if (action.action === 'wait') {
+            await new Promise(r => setTimeout(r, (action as any).duration || 1000));
+            continue;
+          }
+
+          const execRes = await chrome.scripting.executeScript({
+            target: { tabId: tab.id! },
+            func: injectedActionExecutor,
+            args: [action]
+          });
+          
+          const result = execRes[0].result;
+
+          if (!result || !result.success) {
+             throw new Error(result?.error || 'Action execution failed');
+          }
+        }
         m['Action Exec'] = Math.round(performance.now() - t4);
+      } else {
+        addLog("No actions generated by AI.");
       }
 
       setStatus('Success');
