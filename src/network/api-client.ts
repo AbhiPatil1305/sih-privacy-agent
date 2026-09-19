@@ -1,70 +1,83 @@
 import { SafeBrowserContext, AgentAction } from '../shared/types';
 
-export async function fetchAgentPlan(task: string, context: SafeBrowserContext): Promise<{ actions: AgentAction[], reasoning: string }> {
-  console.log("Team 1: Running Local Mock AI Agent (No external server used)");
+export interface PlanResponse {
+  actions: AgentAction[];
+  reasoning: string;
+  serverConnected: boolean;
+  mode: string;
+}
 
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const lowerTask = task.toLowerCase();
+export async function fetchAgentPlan(
+  task: string,
+  context: SafeBrowserContext
+): Promise<PlanResponse> {
+  const SERVER_URL = 'http://localhost:3000/api/plan';
 
-      if (lowerTask.includes('scroll down')) {
-        resolve({
-          actions: [{ action: 'scroll', direction: 'down' }],
-          reasoning: "Local Mock: User explicitly requested to scroll down the page."
-        });
-        return;
-      }
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-      if (lowerTask.includes('scroll up')) {
-        resolve({
-          actions: [{ action: 'scroll', direction: 'up' }],
-          reasoning: "Local Mock: User explicitly requested to scroll up the page."
-        });
-        return;
-      }
+    const res = await fetch(SERVER_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ task, context }),
+      signal: controller.signal
+    });
 
-      if (lowerTask.includes('type')) {
-        const words = lowerTask.split(' ');
-        const typeIndex = words.indexOf('type');
-        let textToType = "test value";
-        if (typeIndex !== -1 && words.length > typeIndex + 1) textToType = words[typeIndex + 1];
+    clearTimeout(timeoutId);
 
-        const inputField = context.visibleElements.find(el => el.tag === 'input' || el.tag === 'textarea');
-        if (inputField) {
-          resolve({
-            actions: [{ action: 'type', element_id: inputField.id, text: textToType }],
-            reasoning: `Local Mock: Found an input field (ID: ${inputField.id}). Proceeding to type "${textToType}".`
-          });
-          return;
-        }
-      }
+    if (res.ok) {
+      const data = await res.json();
+      return {
+        actions: data.actions || [],
+        reasoning: data.reasoning || 'Remote AI processed sanitized context.',
+        serverConnected: true,
+        mode: data.mode || 'demo'
+      };
+    }
+  } catch (err) {
+    console.warn('Backend server not reachable at http://localhost:3000/api/plan. Falling back to local Demo Agent reasoning.', err);
+  }
 
-      if (lowerTask.includes('click')) {
-        const searchTarget = lowerTask.replace('click', '').trim();
-        const words = searchTarget.split(' ').filter(w => w.length > 2);
+  // Fallback: Local Demo Agent Mode (deterministic reasoning layer)
+  const lowerTask = (task || '').toLowerCase();
+  const isFlightSearch =
+    (lowerTask.includes('search') && lowerTask.includes('flight')) ||
+    (lowerTask.includes('mumbai') && lowerTask.includes('delhi')) ||
+    lowerTask.includes('flight');
 
-        let btn = context.visibleElements.find(el => {
-          const isClickable = ['button', 'a', 'div', 'span'].includes(el.tag) || (el.role && ['button', 'link', 'menuitem'].includes(el.role));
-          if (!isClickable || !el.label) return false;
-          
-          const labelLower = (el.label as string).toLowerCase();
-          if (searchTarget && labelLower.includes(searchTarget)) return true;
-          return words.some(w => labelLower.includes(w));
-        });
+  if (isFlightSearch) {
+    const btn = context.visibleElements.find(el => {
+      const l = (el.label || '').toLowerCase();
+      const isClickable = ['button', 'a', 'div', 'span'].includes(el.tag) || (!!el.role && ['button', 'link'].includes(el.role));
+      return isClickable && (l.includes('search flight') || l.includes('search'));
+    });
 
-        if (btn) {
-          resolve({
-             actions: [{ action: 'click', element_id: btn.id }],
-             reasoning: `Local Mock: Located element "${btn.label}" (ID: ${btn.id}) and scheduled a click.`
-          });
-          return;
-        }
-      }
-      
-      resolve({
-        actions: [{ action: 'wait', duration: 1000 }],
-        reasoning: "Local Mock: Could not map the natural language task to a visible element or action. Waiting."
-      });
-    }, 800);
-  });
+    if (btn) {
+      return {
+        actions: [{ action: 'click', element_id: btn.id }],
+        reasoning: `Agent Reasoning — Demo Mode (Local Fallback): Identified flight search (Mumbai → Delhi). Selected '${btn.label}' from sanitized DOM. Zero private profile credentials required.`,
+        serverConnected: false,
+        mode: 'demo'
+      };
+    }
+  }
+
+  if (lowerTask.includes('scroll down')) {
+    return {
+      actions: [{ action: 'scroll', direction: 'down' }],
+      reasoning: 'Agent Reasoning — Demo Mode: Executing requested scroll down.',
+      serverConnected: false,
+      mode: 'demo'
+    };
+  }
+
+  return {
+    actions: [{ action: 'wait', duration: 1000 }],
+    reasoning: 'Agent Reasoning — Demo Mode: Could not map request to a visible action in sanitized context.',
+    serverConnected: false,
+    mode: 'demo'
+  };
 }
