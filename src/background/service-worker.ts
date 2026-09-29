@@ -1,6 +1,7 @@
 import { captureVisibleTab } from '../capture/screenshot';
+import { browserAPI } from '../platform/browser-api';
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'CAPTURE_SCREENSHOT') {
     captureVisibleTab()
       .then(data => sendResponse({ success: true, data: { image: data } }))
@@ -8,3 +9,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true; // Keep channel open for async
   }
 });
+

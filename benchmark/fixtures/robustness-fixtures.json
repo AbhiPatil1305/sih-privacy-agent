@@ -1,0 +1,201 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "devicePixelRatio": 1
+  },
+  "scenarios": [
+    {
+      "id": "Scenario_A_Form_Varied",
+      "name": "Scenario A — Form Page (Side-by-Side Varied Layout)",
+      "category": "FORM",
+      "description": "User registration form with synthetic username, email, password, and submit button.",
+      "task": "Submit the form using the provided synthetic credentials.",
+      "domElements": [
+        { "id": "input_user", "tag": "input", "type": "text", "nameHint": "username", "label": "Username", "bbox": { "x": 60, "y": 80, "width": 240, "height": 38 } },
+        { "id": "input_email", "tag": "input", "type": "email", "nameHint": "email", "label": "user.synthetic@example.test", "bbox": { "x": 320, "y": 80, "width": 260, "height": 38 } },
+        { "id": "input_pass", "tag": "input", "type": "password", "nameHint": "password", "label": "SecretPass123!", "bbox": { "x": 60, "y": 140, "width": 240, "height": 38 } },
+        { "id": "btn_submit", "tag": "button", "label": "Submit Credentials", "bbox": { "x": 320, "y": 140, "width": 180, "height": 40 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        { "id": "gt_email", "category": "EMAIL", "bbox": { "x": 320, "y": 80, "width": 260, "height": 38 } },
+        { "id": "gt_pass", "category": "PASSWORD", "bbox": { "x": 60, "y": 140, "width": 240, "height": 38 } }
+      ],
+      "taskRelevantTargets": [
+        { "id": "input_user", "type": "input", "bbox": { "x": 60, "y": 80, "width": 240, "height": 38 } },
+        { "id": "btn_submit", "type": "button", "bbox": { "x": 320, "y": 140, "width": 180, "height": 40 } }
+      ]
+    },
+    {
+      "id": "Scenario_B_Search_Varied",
+      "name": "Scenario B — Search Page (Grid Layout)",
+      "category": "SEARCH",
+      "description": "Product search bar with filter navigation and synthetic search result card.",
+      "task": "Search for the specified synthetic product and open the requested result.",
+      "domElements": [
+        { "id": "search_box", "tag": "input", "type": "text", "label": "Search catalog...", "bbox": { "x": 80, "y": 30, "width": 450, "height": 42 } },
+        { "id": "btn_search", "tag": "button", "label": "Search", "bbox": { "x": 540, "y": 30, "width": 100, "height": 42 } },
+        { "id": "nav_category", "tag": "a", "label": "Electronics", "bbox": { "x": 80, "y": 90, "width": 110, "height": 28 } },
+        { "id": "card_result_1", "tag": "div", "label": "Synthetic Quantum Processor v2", "bbox": { "x": 80, "y": 140, "width": 300, "height": 180 } },
+        { "id": "link_view_result", "tag": "a", "label": "View Product Details", "bbox": { "x": 100, "y": 270, "width": 160, "height": 32 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": [],
+      "taskRelevantTargets": [
+        { "id": "search_box", "type": "input", "bbox": { "x": 80, "y": 30, "width": 450, "height": 42 } },
+        { "id": "btn_search", "type": "button", "bbox": { "x": 540, "y": 30, "width": 100, "height": 42 } },
+        { "id": "link_view_result", "type": "link", "bbox": { "x": 100, "y": 270, "width": 160, "height": 32 } }
+      ]
+    },
+    {
+      "id": "Scenario_C_Dashboard_Varied",
+      "name": "Scenario C — Dashboard Page (Metrics & Tabular Layout)",
+      "category": "DASHBOARD",
+      "description": "Executive dashboard with summary cards, tabular data, and synthetic SSN/account rows.",
+      "task": "Open the requested dashboard section.",
+      "domElements": [
+        { "id": "btn_sec_analytics", "tag": "button", "label": "Analytics Section", "bbox": { "x": 50, "y": 40, "width": 140, "height": 36 } },
+        { "id": "btn_sec_reports", "tag": "button", "label": "Reports Section", "bbox": { "x": 200, "y": 40, "width": 140, "height": 36 } },
+        { "id": "table_ssn_cell", "tag": "input", "type": "text", "nameHint": "ssn", "label": "SSN: 987-65-4321", "bbox": { "x": 50, "y": 220, "width": 220, "height": 34 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        { "id": "gt_ssn", "category": "SSN", "bbox": { "x": 50, "y": 220, "width": 220, "height": 34 } }
+      ],
+      "taskRelevantTargets": [
+        { "id": "btn_sec_analytics", "type": "button", "bbox": { "x": 50, "y": 40, "width": 140, "height": 36 } },
+        { "id": "btn_sec_reports", "type": "button", "bbox": { "x": 200, "y": 40, "width": 140, "height": 36 } }
+      ]
+    },
+    {
+      "id": "Scenario_D_Profile_Varied",
+      "name": "Scenario D — Profile Page (Avatar & Contact Layout)",
+      "category": "PROFILE",
+      "description": "User profile with avatar photo, synthetic phone, email, and settings button.",
+      "task": "Open the account settings section.",
+      "domElements": [
+        { "id": "profile_name", "tag": "div", "label": "Alex Morgan", "bbox": { "x": 180, "y": 60, "width": 200, "height": 30 } },
+        { "id": "profile_email", "tag": "input", "type": "email", "label": "alex.morgan.synthetic@example.org", "bbox": { "x": 180, "y": 100, "width": 280, "height": 34 } },
+        { "id": "profile_phone", "tag": "input", "type": "tel", "label": "+1-555-019-2834", "bbox": { "x": 180, "y": 145, "width": 200, "height": 34 } },
+        { "id": "btn_settings", "tag": "button", "label": "Account Settings", "bbox": { "x": 180, "y": 200, "width": 150, "height": 40 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [
+        { "id": "vis_avatar", "category": "FACE", "confidence": 0.96, "bbox": { "x": 50, "y": 60, "width": 110, "height": 110 }, "source": "vision", "protection": "BLUR" }
+      ],
+      "groundTruthRegions": [
+        { "id": "gt_face", "category": "FACE", "bbox": { "x": 50, "y": 60, "width": 110, "height": 110 } },
+        { "id": "gt_email", "category": "EMAIL", "bbox": { "x": 180, "y": 100, "width": 280, "height": 34 } },
+        { "id": "gt_phone", "category": "PHONE", "bbox": { "x": 180, "y": 145, "width": 200, "height": 34 } }
+      ],
+      "taskRelevantTargets": [
+        { "id": "btn_settings", "type": "button", "bbox": { "x": 180, "y": 200, "width": 150, "height": 40 } }
+      ]
+    },
+    {
+      "id": "Scenario_E_Canvas_Visual_Varied",
+      "name": "Scenario E — Canvas / Visual Text Page",
+      "category": "VISUAL_CANVAS",
+      "description": "Visual canvas rendering synthetic contact text and an interactive canvas control button.",
+      "task": "Click the requested visual control.",
+      "domElements": [
+        { "id": "btn_canvas_ctrl", "tag": "button", "label": "Execute Visual Action", "bbox": { "x": 400, "y": 220, "width": 180, "height": 40 } }
+      ],
+      "ocrResults": [
+        { "text": "Helpline: support.hotline@example.test", "confidence": 0.94, "bbox": { "x": 60, "y": 80, "width": 320, "height": 32 } },
+        { "text": "Direct: +1-555-888-9900", "confidence": 0.91, "bbox": { "x": 60, "y": 125, "width": 240, "height": 32 } }
+      ],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        { "id": "gt_ocr_email", "category": "EMAIL", "bbox": { "x": 60, "y": 80, "width": 320, "height": 32 } },
+        { "id": "gt_ocr_phone", "category": "PHONE", "bbox": { "x": 60, "y": 125, "width": 240, "height": 32 } }
+      ],
+      "taskRelevantTargets": [
+        { "id": "btn_canvas_ctrl", "type": "button", "bbox": { "x": 400, "y": 220, "width": 180, "height": 40 } }
+      ]
+    },
+    {
+      "id": "Scenario_F_Mixed_Dense_Varied",
+      "name": "Scenario F — Mixed Dense Page (DOM + Visual + Close Targets)",
+      "category": "MIXED",
+      "description": "Dense layout combining DOM credit card input, visual face photo, OCR email banner, and adjacent button.",
+      "task": "Navigate to the requested section.",
+      "domElements": [
+        { "id": "input_cc", "tag": "input", "type": "text", "nameHint": "card_number", "label": "Card: 4532-0155-8921-1199", "bbox": { "x": 40, "y": 60, "width": 240, "height": 36 } },
+        { "id": "btn_pay_next", "tag": "button", "label": "Proceed to Review", "bbox": { "x": 290, "y": 60, "width": 160, "height": 36 } }
+      ],
+      "ocrResults": [
+        { "text": "Billing Support: billing@company.test", "confidence": 0.95, "bbox": { "x": 40, "y": 115, "width": 280, "height": 30 } }
+      ],
+      "visualRegions": [
+        { "id": "vis_face_card", "category": "FACE", "confidence": 0.97, "bbox": { "x": 340, "y": 115, "width": 80, "height": 80 }, "source": "vision", "protection": "BLUR" }
+      ],
+      "groundTruthRegions": [
+        { "id": "gt_cc", "category": "CREDIT_CARD", "bbox": { "x": 40, "y": 60, "width": 240, "height": 36 } },
+        { "id": "gt_ocr_email", "category": "EMAIL", "bbox": { "x": 40, "y": 115, "width": 280, "height": 30 } },
+        { "id": "gt_face_card", "category": "FACE", "bbox": { "x": 340, "y": 115, "width": 80, "height": 80 } }
+      ],
+      "taskRelevantTargets": [
+        { "id": "btn_pay_next", "type": "button", "bbox": { "x": 290, "y": 60, "width": 160, "height": 36 } }
+      ]
+    },
+    {
+      "id": "Scenario_Neg_A_Zero_PII",
+      "name": "Negative Case A — Zero PII Documentation Page",
+      "category": "NEGATIVE_CONTROL",
+      "description": "Pure documentation page with search bar and navigation links (zero PII).",
+      "task": "Navigate to the documentation section.",
+      "domElements": [
+        { "id": "nav_guide", "tag": "a", "label": "User Guide", "bbox": { "x": 40, "y": 20, "width": 100, "height": 30 } },
+        { "id": "nav_faq", "tag": "a", "label": "FAQ", "bbox": { "x": 160, "y": 20, "width": 60, "height": 30 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": [],
+      "taskRelevantTargets": [
+        { "id": "nav_guide", "type": "link", "bbox": { "x": 40, "y": 20, "width": 100, "height": 30 } }
+      ]
+    },
+    {
+      "id": "Scenario_Neg_B_Close_Controls",
+      "name": "Negative Case B — PII Immediately Adjacent to Control",
+      "category": "NEGATIVE_CONTROL",
+      "description": "Password field placed 10px adjacent to Show/Hide password toggle button.",
+      "task": "Click the toggle button.",
+      "domElements": [
+        { "id": "input_pass_adj", "tag": "input", "type": "password", "label": "Secret123", "bbox": { "x": 50, "y": 100, "width": 200, "height": 35 } },
+        { "id": "btn_show_toggle", "tag": "button", "label": "Show", "bbox": { "x": 260, "y": 100, "width": 60, "height": 35 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        { "id": "gt_pass_adj", "category": "PASSWORD", "bbox": { "x": 50, "y": 100, "width": 200, "height": 35 } }
+      ],
+      "taskRelevantTargets": [
+        { "id": "btn_show_toggle", "type": "button", "bbox": { "x": 260, "y": 100, "width": 60, "height": 35 } }
+      ]
+    },
+    {
+      "id": "Scenario_Neg_C_Non_PII_Visual_Text",
+      "name": "Negative Case C — Non-PII Visual Code Snippet Text",
+      "category": "NEGATIVE_CONTROL",
+      "description": "Visual canvas rendering technical code syntax string `function calculateTax(val)` (not PII).",
+      "task": "Click the copy button.",
+      "domElements": [
+        { "id": "btn_copy_code", "tag": "button", "label": "Copy Code", "bbox": { "x": 350, "y": 50, "width": 100, "height": 32 } }
+      ],
+      "ocrResults": [
+        { "text": "function calculateTax(val) { return val * 0.15; }", "confidence": 0.96, "bbox": { "x": 40, "y": 50, "width": 300, "height": 32 } }
+      ],
+      "visualRegions": [],
+      "groundTruthRegions": [],
+      "taskRelevantTargets": [
+        { "id": "btn_copy_code", "type": "button", "bbox": { "x": 350, "y": 50, "width": 100, "height": 32 } }
+      ]
+    }
+  ]
+}

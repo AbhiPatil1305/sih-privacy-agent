@@ -1,0 +1,2082 @@
+[
+  {
+    "screenshot": "step_10_20251106@080732.png",
+    "official_id": "6964746f02180e703215fdd8",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.0,
+      "width": 78.6,
+      "height": 9.9
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:07",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_11_20251106@080808.png",
+    "official_id": "6964746f02180e703215fdd5",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.1,
+      "width": 79.1,
+      "height": 10.2
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:08",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_12_20251106@080849.png",
+    "official_id": "6964746f02180e703215fdd6",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.1,
+      "width": 79.1,
+      "height": 10.2
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:08",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_13_20251106@080921.png",
+    "official_id": "6964746f02180e703215fdd3",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.0,
+      "width": 78.8,
+      "height": 10.1
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:09",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_14_20251106@080952.png",
+    "official_id": "6964746f02180e703215fdd4",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.0,
+      "width": 78.8,
+      "height": 10.1
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:09",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_15_20251106@081028.png",
+    "official_id": "6964746f02180e703215fdd2",
+    "bbox": {
+      "x": 1704.1,
+      "y": 8.0,
+      "width": 78.9,
+      "height": 10.2
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:10",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_16_20251106@081105.png",
+    "official_id": "6964746f02180e703215fdd0",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.0,
+      "width": 77.1,
+      "height": 10.2
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:11",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_17_20251106@081136.png",
+    "official_id": "6964746f02180e703215fdd1",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.0,
+      "width": 77.1,
+      "height": 10.2
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:11",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_18_20251106@081213.png",
+    "official_id": "6964746f02180e703215fdce",
+    "bbox": {
+      "x": 1704.0,
+      "y": 8.0,
+      "width": 78.5,
+      "height": 10.1
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:12",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_19_20251106@081242.png",
+    "official_id": "6964746f02180e703215fdcf",
+    "bbox": {
+      "x": 1704.0,
+      "y": 8.0,
+      "width": 78.5,
+      "height": 10.1
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:12",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964746f02180e703215fdc0",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.0,
+      "width": 78.7,
+      "height": 10.4
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:00",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee806a",
+    "bbox": {
+      "x": 113.0,
+      "y": 248.5,
+      "width": 88.9,
+      "height": 193.4
+    },
+    "official_category": "3",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "2024-01-08  2024-01-15  2024-01-22  2024-01-29  2024-02-05  2024-02-12  2024-02-19  2024-02-26  2024-03-04  2024-03-11",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee8073",
+    "bbox": {
+      "x": 370.4,
+      "y": 248.7,
+      "width": 26.7,
+      "height": 192.1
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "175 175 175 175 175 175 175 175 175 175",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee807b",
+    "bbox": {
+      "x": 510.6,
+      "y": 248.6,
+      "width": 32.0,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "72.5  73  72.8  73.5  73.2  72.6  72  71.5  71.2  71",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee8083",
+    "bbox": {
+      "x": 654.6,
+      "y": 248.8,
+      "width": 32.5,
+      "height": 192.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "23.7  23. 8  23. 8  24 23.9 23.7 23.5 23.3 23.2 23.2",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee808b",
+    "bbox": {
+      "x": 693.8,
+      "y": 248.7,
+      "width": 51.7,
+      "height": 192.9
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "118/75  120/78  115/73  122/80  119/76  117/74  115/72  116/73  114/71  115/72",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee8093",
+    "bbox": {
+      "x": 959.5,
+      "y": 248.8,
+      "width": 18.6,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "68 72 65 70 68 66 64 65 63 64",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee809c",
+    "bbox": {
+      "x": 1104.7,
+      "y": 248.7,
+      "width": 18.3,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "94 97 92 95 94 92 90 92 88 90",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee80a5",
+    "bbox": {
+      "x": 1234.8,
+      "y": 248.5,
+      "width": 33.3,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "97.9 97.7 98.1 97.9  97.7 97.9 98.1",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee80ae",
+    "bbox": {
+      "x": 1273.1,
+      "y": 248.9,
+      "width": 168.4,
+      "height": 195.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Normal checkup  Recovering from cold  Good recovery  Started fitness plan  Week 1 of fitness  Visible results  Weight decreasing  Keep going  Target weight reached  Maintaining well",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee8106",
+    "bbox": {
+      "x": 256.9,
+      "y": 469.2,
+      "width": 362.5,
+      "height": 32.2
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Appendicitis surgery 2019; Mild fatty liver 2022  Penicillin; Seafood",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_1_20251106@080018.png",
+    "official_id": "6964975721679ceb9eee810e",
+    "bbox": {
+      "x": 257.4,
+      "y": 508.6,
+      "width": 221.2,
+      "height": 12.6
+    },
+    "official_category": "2",
+    "official_risk_level": "HIGH_RISK",
+    "official_ocr_text": "USA-320102-1988XXXXXXXX",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_20_20251106@081315.png",
+    "official_id": "6964746f02180e703215fdcd",
+    "bbox": {
+      "x": 1704.0,
+      "y": 8.0,
+      "width": 78.3,
+      "height": 10.1
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:13",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_21_20251106@081416.png",
+    "official_id": "6964746f02180e703215fdcb",
+    "bbox": {
+      "x": 1704.1,
+      "y": 8.1,
+      "width": 79.1,
+      "height": 10.0
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:14",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_22_20251106@081440.png",
+    "official_id": "6964746f02180e703215fdcc",
+    "bbox": {
+      "x": 1704.1,
+      "y": 8.1,
+      "width": 79.1,
+      "height": 10.0
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:14",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964746f02180e703215fdc9",
+    "bbox": {
+      "x": 1704.1,
+      "y": 8.0,
+      "width": 78.1,
+      "height": 10.3
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:15",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee8070",
+    "bbox": {
+      "x": 112.4,
+      "y": 209.7,
+      "width": 88.9,
+      "height": 193.4
+    },
+    "official_category": "3",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "2024-01-08  2024-01-15  2024-01-22  2024-01-29  2024-02-05  2024-02-12  2024-02-19  2024-02-26  2024-03-04  2024-03-11",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee8078",
+    "bbox": {
+      "x": 370.5,
+      "y": 209.9,
+      "width": 26.7,
+      "height": 191.9
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "175 175 175 175 175 175 175 175 175 175",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee8080",
+    "bbox": {
+      "x": 510.3,
+      "y": 210.0,
+      "width": 32.0,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "72.5  73  72.8  73.5  73.2  72.6  72  71.5  71.2  71",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee8088",
+    "bbox": {
+      "x": 655.0,
+      "y": 209.8,
+      "width": 32.5,
+      "height": 192.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "23.7  23. 8  23. 8  24 23.9 23.7 23.5 23.3 23.2 23.2",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee8090",
+    "bbox": {
+      "x": 693.8,
+      "y": 209.1,
+      "width": 51.7,
+      "height": 192.9
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "118/75  120/78  115/73  122/80  119/76  117/74  115/72  116/73  114/71  115/72",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee8099",
+    "bbox": {
+      "x": 959.6,
+      "y": 209.9,
+      "width": 18.6,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "68 72 65 70 68 66 64 65 63 64",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee80a2",
+    "bbox": {
+      "x": 1104.8,
+      "y": 209.7,
+      "width": 18.3,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "94 97 92 95 94 92 90 92 88 90",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee80ab",
+    "bbox": {
+      "x": 1234.9,
+      "y": 209.8,
+      "width": 33.3,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "97.9 97.7 98.1 97.9  97.7 97.9 98.1",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee80b4",
+    "bbox": {
+      "x": 1273.1,
+      "y": 209.9,
+      "width": 168.4,
+      "height": 195.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Normal checkup  Recovering from cold  Good recovery  Started fitness plan  Week 1 of fitness  Visible results  Weight decreasing  Keep going  Target weight reached  Maintaining well",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee810b",
+    "bbox": {
+      "x": 257.2,
+      "y": 429.9,
+      "width": 362.5,
+      "height": 32.2
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Appendicitis surgery 2019; Mild fatty liver 2022  Penicillin; Seafood",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_23_20251106@081510.png",
+    "official_id": "6964975721679ceb9eee8113",
+    "bbox": {
+      "x": 257.8,
+      "y": 469.9,
+      "width": 221.2,
+      "height": 12.6
+    },
+    "official_category": "2",
+    "official_risk_level": "HIGH_RISK",
+    "official_ocr_text": "USA-320102-1988XXXXXXXX",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_24_20251106@081550.png",
+    "official_id": "6964746f02180e703215fdca",
+    "bbox": {
+      "x": 1704.1,
+      "y": 8.0,
+      "width": 78.1,
+      "height": 10.3
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:15",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_25_20251106@081623.png",
+    "official_id": "6964746f02180e703215fdc7",
+    "bbox": {
+      "x": 1704.0,
+      "y": 8.0,
+      "width": 78.9,
+      "height": 10.4
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:16",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964746f02180e703215fdc1",
+    "bbox": {
+      "x": 1704.1,
+      "y": 7.9,
+      "width": 78.2,
+      "height": 10.3
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:02",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee806b",
+    "bbox": {
+      "x": 113.0,
+      "y": 248.5,
+      "width": 88.9,
+      "height": 193.4
+    },
+    "official_category": "3",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "2024-01-08  2024-01-15  2024-01-22  2024-01-29  2024-02-05  2024-02-12  2024-02-19  2024-02-26  2024-03-04  2024-03-11",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee8074",
+    "bbox": {
+      "x": 370.8,
+      "y": 248.2,
+      "width": 26.3,
+      "height": 192.7
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "175 175 175 175 175 175 175 175 175 175",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee807c",
+    "bbox": {
+      "x": 510.6,
+      "y": 248.6,
+      "width": 32.0,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "72.5  73  72.8  73.5  73.2  72.6  72  71.5  71.2  71",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee8084",
+    "bbox": {
+      "x": 654.6,
+      "y": 248.8,
+      "width": 32.5,
+      "height": 192.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "23.7  23. 8  23. 8  24 23.9 23.7 23.5 23.3 23.2 23.2",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee808c",
+    "bbox": {
+      "x": 693.8,
+      "y": 248.7,
+      "width": 51.7,
+      "height": 192.9
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "118/75  120/78  115/73  122/80  119/76  117/74  115/72  116/73  114/71  115/72",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee8094",
+    "bbox": {
+      "x": 959.5,
+      "y": 248.8,
+      "width": 18.6,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "68 72 65 70 68 66 64 65 63 64",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee809d",
+    "bbox": {
+      "x": 1104.7,
+      "y": 248.7,
+      "width": 18.3,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "94 97 92 95 94 92 90 92 88 90",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee80a6",
+    "bbox": {
+      "x": 1234.8,
+      "y": 248.5,
+      "width": 33.3,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "97.9 97.7 98.1 97.9  97.7 97.9 98.1",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee80af",
+    "bbox": {
+      "x": 1273.1,
+      "y": 248.9,
+      "width": 168.4,
+      "height": 195.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Normal checkup  Recovering from cold  Good recovery  Started fitness plan  Week 1 of fitness  Visible results  Weight decreasing  Keep going  Target weight reached  Maintaining well",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee8107",
+    "bbox": {
+      "x": 256.9,
+      "y": 469.2,
+      "width": 362.5,
+      "height": 32.2
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Appendicitis surgery 2019; Mild fatty liver 2022  Penicillin; Seafood",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "6964975721679ceb9eee810f",
+    "bbox": {
+      "x": 257.4,
+      "y": 508.6,
+      "width": 221.2,
+      "height": 12.6
+    },
+    "official_category": "2",
+    "official_risk_level": "HIGH_RISK",
+    "official_ocr_text": "USA-320102-1988XXXXXXXX",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_2_20251106@080211.png",
+    "official_id": "69788b9cfb6fdbc1908c07f3",
+    "bbox": {
+      "x": 163.6,
+      "y": 230.0,
+      "width": 1203.7,
+      "height": 14.9
+    },
+    "official_category": "6",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Date Height(cm) Weight(kg) BMI  Blood Pressure Heart Rate Blood SugarTemperature(\u00b0F) Notes",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964746f02180e703215fdc2",
+    "bbox": {
+      "x": 1703.9,
+      "y": 7.9,
+      "width": 78.7,
+      "height": 10.3
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:03",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee806c",
+    "bbox": {
+      "x": 113.0,
+      "y": 248.5,
+      "width": 88.9,
+      "height": 193.4
+    },
+    "official_category": "3",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "2024-01-08  2024-01-15  2024-01-22  2024-01-29  2024-02-05  2024-02-12  2024-02-19  2024-02-26  2024-03-04  2024-03-11",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee8075",
+    "bbox": {
+      "x": 370.0,
+      "y": 249.0,
+      "width": 27.1,
+      "height": 191.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "175 175 175 175 175 175 175 175 175 175",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee807d",
+    "bbox": {
+      "x": 510.6,
+      "y": 248.6,
+      "width": 32.0,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "72.5  73  72.8  73.5  73.2  72.6  72  71.5  71.2  71",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee8085",
+    "bbox": {
+      "x": 654.6,
+      "y": 248.8,
+      "width": 32.5,
+      "height": 192.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "23.7  23. 8  23. 8  24 23.9 23.7 23.5 23.3 23.2 23.2",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee808d",
+    "bbox": {
+      "x": 693.8,
+      "y": 248.7,
+      "width": 51.7,
+      "height": 192.9
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "118/75  120/78  115/73  122/80  119/76  117/74  115/72  116/73  114/71  115/72",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee8095",
+    "bbox": {
+      "x": 959.5,
+      "y": 248.8,
+      "width": 18.6,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "68 72 65 70 68 66 64 65 63 64",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee809e",
+    "bbox": {
+      "x": 1104.7,
+      "y": 248.7,
+      "width": 18.3,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "94 97 92 95 94 92 90 92 88 90",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee80a7",
+    "bbox": {
+      "x": 1234.8,
+      "y": 248.5,
+      "width": 33.3,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "97.9 97.7 98.1 97.9  97.7 97.9 98.1",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee80b0",
+    "bbox": {
+      "x": 1273.1,
+      "y": 248.9,
+      "width": 168.4,
+      "height": 195.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Normal checkup  Recovering from cold  Good recovery  Started fitness plan  Week 1 of fitness  Visible results  Weight decreasing  Keep going  Target weight reached  Maintaining well",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee8108",
+    "bbox": {
+      "x": 256.9,
+      "y": 469.2,
+      "width": 362.5,
+      "height": 32.2
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Appendicitis surgery 2019; Mild fatty liver 2022  Penicillin; Seafood",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "6964975721679ceb9eee8110",
+    "bbox": {
+      "x": 257.4,
+      "y": 508.6,
+      "width": 221.2,
+      "height": 12.6
+    },
+    "official_category": "2",
+    "official_risk_level": "HIGH_RISK",
+    "official_ocr_text": "USA-320102-1988XXXXXXXX",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_3_20251106@080322.png",
+    "official_id": "69788b9cfb6fdbc1908c07f4",
+    "bbox": {
+      "x": 163.6,
+      "y": 230.0,
+      "width": 1203.7,
+      "height": 14.9
+    },
+    "official_category": "6",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Date Height(cm) Weight(kg) BMI  Blood Pressure Heart Rate Blood SugarTemperature(\u00b0F) Notes",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "6964746f02180e703215fddc",
+    "bbox": {
+      "x": 1703.9,
+      "y": 7.9,
+      "width": 79.1,
+      "height": 10.0
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:04",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "6964975721679ceb9eee806d",
+    "bbox": {
+      "x": 113.0,
+      "y": 248.5,
+      "width": 88.9,
+      "height": 193.4
+    },
+    "official_category": "3",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "2024-01-08  2024-01-15  2024-01-22  2024-01-29  2024-02-05  2024-02-12  2024-02-19  2024-02-26  2024-03-04  2024-03-11",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "6964975721679ceb9eee8096",
+    "bbox": {
+      "x": 959.5,
+      "y": 248.8,
+      "width": 18.6,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "68 72 65 70 68 66 64 65 63 64",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "6964975721679ceb9eee809f",
+    "bbox": {
+      "x": 1104.7,
+      "y": 248.7,
+      "width": 18.3,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "94 97 92 95 94 92 90 92 88 90",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "6964975721679ceb9eee80a8",
+    "bbox": {
+      "x": 1234.8,
+      "y": 248.5,
+      "width": 33.3,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "97.9 97.7 98.1 97.9  97.7 97.9 98.1",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "6964975721679ceb9eee80b1",
+    "bbox": {
+      "x": 1273.1,
+      "y": 248.9,
+      "width": 168.4,
+      "height": 195.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Normal checkup  Recovering from cold  Good recovery  Started fitness plan  Week 1 of fitness  Visible results  Weight decreasing  Keep going  Target weight reached  Maintaining well",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "6964aa35d3c18ca74f5e209c",
+    "bbox": {
+      "x": 257.8,
+      "y": 508.7,
+      "width": 119.3,
+      "height": 12.8
+    },
+    "official_category": "2",
+    "official_risk_level": "HIGH_RISK",
+    "official_ocr_text": "USA-320102-19",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "6964aa35d3c18ca74f5e209d",
+    "bbox": {
+      "x": 257.2,
+      "y": 468.9,
+      "width": 121.6,
+      "height": 32.6
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Appendicitis sur  Penicillin; Seafo",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "69788b9cfb6fdbc1908c07f7",
+    "bbox": {
+      "x": 163.1,
+      "y": 229.8,
+      "width": 211.9,
+      "height": 14.9
+    },
+    "official_category": "6",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Date Height(cm)",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "J. Annotation-granularity mismatch",
+    "reason_for_miss": "Table header labeled as privacy region in GUIGuard.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_4_20251106@080357.png",
+    "official_id": "69788b9cfb6fdbc1908c07f8",
+    "bbox": {
+      "x": 755.0,
+      "y": 229.9,
+      "width": 612.4,
+      "height": 13.9
+    },
+    "official_category": "6",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Pressure Heart Rate Blood Sugar Temperature(\u00b0F) Notes",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964746f02180e703215fddd",
+    "bbox": {
+      "x": 1703.9,
+      "y": 7.9,
+      "width": 79.1,
+      "height": 10.0
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:04",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee806e",
+    "bbox": {
+      "x": 113.0,
+      "y": 248.5,
+      "width": 88.9,
+      "height": 193.4
+    },
+    "official_category": "3",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "2024-01-08  2024-01-15  2024-01-22  2024-01-29  2024-02-05  2024-02-12  2024-02-19  2024-02-26  2024-03-04  2024-03-11",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee8076",
+    "bbox": {
+      "x": 370.8,
+      "y": 248.6,
+      "width": 26.6,
+      "height": 192.6
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "175 175 175 175 175 175 175 175 175 175",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee807e",
+    "bbox": {
+      "x": 510.5,
+      "y": 248.6,
+      "width": 32.0,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "72.5  73  72.8  73.5  73.2  72.6  72  71.5  71.2  71",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee8086",
+    "bbox": {
+      "x": 654.6,
+      "y": 248.8,
+      "width": 32.5,
+      "height": 192.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "23.7  23. 8  23. 8  24 23.9 23.7 23.5 23.3 23.2 23.2",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee808e",
+    "bbox": {
+      "x": 693.8,
+      "y": 248.7,
+      "width": 51.7,
+      "height": 192.9
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "118/75  120/78  115/73  122/80  119/76  117/74  115/72  116/73  114/71  115/72",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee8097",
+    "bbox": {
+      "x": 959.5,
+      "y": 248.8,
+      "width": 18.6,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "68 72 65 70 68 66 64 65 63 64",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee80a0",
+    "bbox": {
+      "x": 1104.8,
+      "y": 248.7,
+      "width": 18.3,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "94 97 92 95 94 92 90 92 88 90",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee80a9",
+    "bbox": {
+      "x": 1234.8,
+      "y": 248.5,
+      "width": 33.3,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "97.9 97.7 98.1 97.9  97.7 97.9 98.1",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee80b2",
+    "bbox": {
+      "x": 1273.1,
+      "y": 248.9,
+      "width": 168.4,
+      "height": 195.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Normal checkup  Recovering from cold  Good recovery  Started fitness plan  Week 1 of fitness  Visible results  Weight decreasing  Keep going  Target weight reached  Maintaining well",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee8109",
+    "bbox": {
+      "x": 256.9,
+      "y": 469.2,
+      "width": 362.5,
+      "height": 32.2
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Appendicitis surgery 2019; Mild fatty liver 2022  Penicillin; Seafood",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "6964975721679ceb9eee8111",
+    "bbox": {
+      "x": 257.4,
+      "y": 508.6,
+      "width": 221.2,
+      "height": 12.6
+    },
+    "official_category": "2",
+    "official_risk_level": "HIGH_RISK",
+    "official_ocr_text": "USA-320102-1988XXXXXXXX",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_5_20251106@080437.png",
+    "official_id": "69788b9cfb6fdbc1908c07f5",
+    "bbox": {
+      "x": 163.6,
+      "y": 230.0,
+      "width": 1203.7,
+      "height": 14.9
+    },
+    "official_category": "6",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Date Height(cm) Weight(kg) BMI  Blood Pressure Heart Rate Blood SugarTemperature(\u00b0F) Notes",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964746f02180e703215fdda",
+    "bbox": {
+      "x": 1703.8,
+      "y": 8.0,
+      "width": 78.7,
+      "height": 10.4
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:05",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee806f",
+    "bbox": {
+      "x": 113.0,
+      "y": 248.5,
+      "width": 88.9,
+      "height": 193.4
+    },
+    "official_category": "3",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "2024-01-08  2024-01-15  2024-01-22  2024-01-29  2024-02-05  2024-02-12  2024-02-19  2024-02-26  2024-03-04  2024-03-11",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee8077",
+    "bbox": {
+      "x": 370.9,
+      "y": 248.4,
+      "width": 26.7,
+      "height": 192.2
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "175 175 175 175 175 175 175 175 175 175",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee807f",
+    "bbox": {
+      "x": 510.6,
+      "y": 248.6,
+      "width": 32.0,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "72.5  73  72.8  73.5  73.2  72.6  72  71.5  71.2  71",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee8087",
+    "bbox": {
+      "x": 654.6,
+      "y": 248.8,
+      "width": 32.5,
+      "height": 192.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "23.7  23. 8  23. 8  24 23.9 23.7 23.5 23.3 23.2 23.2",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee808f",
+    "bbox": {
+      "x": 693.8,
+      "y": 248.7,
+      "width": 51.7,
+      "height": 192.9
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "118/75  120/78  115/73  122/80  119/76  117/74  115/72  116/73  114/71  115/72",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee8098",
+    "bbox": {
+      "x": 959.5,
+      "y": 248.8,
+      "width": 18.6,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "68 72 65 70 68 66 64 65 63 64",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee80a1",
+    "bbox": {
+      "x": 1104.7,
+      "y": 248.7,
+      "width": 18.3,
+      "height": 192.3
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "94 97 92 95 94 92 90 92 88 90",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee80aa",
+    "bbox": {
+      "x": 1234.8,
+      "y": 248.5,
+      "width": 33.3,
+      "height": 192.8
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "97.9 97.7 98.1 97.9  97.7 97.9 98.1",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "H. Spreadsheet/table micro-region",
+    "reason_for_miss": "Unlabeled raw numeric data column inside desktop spreadsheet cell without DOM node context.",
+    "browser_relevant": true,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee80b3",
+    "bbox": {
+      "x": 1273.1,
+      "y": 248.9,
+      "width": 168.4,
+      "height": 195.5
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Normal checkup  Recovering from cold  Good recovery  Started fitness plan  Week 1 of fitness  Visible results  Weight decreasing  Keep going  Target weight reached  Maintaining well",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee810a",
+    "bbox": {
+      "x": 256.9,
+      "y": 469.2,
+      "width": 362.5,
+      "height": 32.2
+    },
+    "official_category": "5",
+    "official_risk_level": "MEDIUM_RISK",
+    "official_ocr_text": "Appendicitis surgery 2019; Mild fatty liver 2022  Penicillin; Seafood",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "6964975721679ceb9eee8112",
+    "bbox": {
+      "x": 257.4,
+      "y": 508.6,
+      "width": 221.2,
+      "height": 12.6
+    },
+    "official_category": "2",
+    "official_risk_level": "HIGH_RISK",
+    "official_ocr_text": "USA-320102-1988XXXXXXXX",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_6_20251106@080508.png",
+    "official_id": "69788b9cfb6fdbc1908c07f6",
+    "bbox": {
+      "x": 163.6,
+      "y": 230.0,
+      "width": 1203.7,
+      "height": 14.9
+    },
+    "official_category": "6",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Date Height(cm) Weight(kg) BMI  Blood Pressure Heart Rate Blood SugarTemperature(\u00b0F) Notes",
+    "status": "TRUE_POSITIVE",
+    "detector_source": "ocr_vision_fusion",
+    "matched_iou": 1.0,
+    "failure_class": "NONE",
+    "reason_for_miss": "Successfully detected and matched",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_7_20251106@080532.png",
+    "official_id": "6964746f02180e703215fddb",
+    "bbox": {
+      "x": 1703.8,
+      "y": 8.0,
+      "width": 78.7,
+      "height": 10.4
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:05",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_8_20251106@080612.png",
+    "official_id": "6964746f02180e703215fdd9",
+    "bbox": {
+      "x": 1704.0,
+      "y": 8.0,
+      "width": 79.0,
+      "height": 10.3
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:06 ",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  },
+  {
+    "screenshot": "step_9_20251106@080656.png",
+    "official_id": "6964746f02180e703215fdd7",
+    "bbox": {
+      "x": 1703.9,
+      "y": 8.0,
+      "width": 78.6,
+      "height": 9.9
+    },
+    "official_category": "3",
+    "official_risk_level": "LOW_RISK",
+    "official_ocr_text": "Nov 6 08:07",
+    "status": "FALSE_NEGATIVE",
+    "detector_source": "none",
+    "matched_iou": 0,
+    "failure_class": "I. Unsupported privacy category",
+    "reason_for_miss": "GNOME Desktop OS panel clock widget timestamp (outside browser DOM viewport).",
+    "browser_relevant": false,
+    "sih_relevant": false
+  }
+]

@@ -1,10 +1,11 @@
 import { PageCapture } from '../shared/types';
+import { browserAPI } from '../platform/browser-api';
 
 export async function capturePage(tabId: number): Promise<PageCapture> {
-  const screenshotResp = await chrome.runtime.sendMessage({ action: 'CAPTURE_SCREENSHOT' });
+  const screenshotResp = await browserAPI.runtime.sendMessage({ action: 'CAPTURE_SCREENSHOT' });
   if (!screenshotResp.success) throw new Error("Failed to capture screenshot");
   
-  const results = await chrome.scripting.executeScript({
+  const results = await browserAPI.scripting.executeScript({
     target: { tabId: tabId },
     func: () => {
       const INTERESTING_TAGS = ['INPUT', 'BUTTON', 'A', 'TEXTAREA', 'SELECT', 'LABEL', 'FORM', 'H1', 'H2', 'H3', 'P', 'SPAN', 'DIV'];

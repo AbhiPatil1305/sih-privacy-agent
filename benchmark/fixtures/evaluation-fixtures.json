@@ -1,0 +1,112 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "devicePixelRatio": 1
+  },
+  "scenarios": [
+    {
+      "id": "Scenario_A_Normal_Page",
+      "name": "Scenario A — Normal Webpage (Zero PII)",
+      "description": "Standard documentation page with search input and nav links",
+      "domElements": [
+        { "id": "search_box", "tag": "input", "type": "text", "label": "Search Documentation...", "bbox": { "x": 50, "y": 20, "width": 300, "height": 35 } },
+        { "id": "nav_docs", "tag": "a", "label": "Docs", "bbox": { "x": 370, "y": 25, "width": 60, "height": 25 } },
+        { "id": "nav_api", "tag": "a", "label": "API", "bbox": { "x": 440, "y": 25, "width": 60, "height": 25 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": []
+    },
+    {
+      "id": "Scenario_B_DOM_PII",
+      "name": "Scenario B — DOM-Visible PII",
+      "description": "Form with name, email input, and phone input",
+      "domElements": [
+        { "id": "user_name", "tag": "input", "type": "text", "label": "Full Name", "bbox": { "x": 100, "y": 100, "width": 250, "height": 35 } },
+        { "id": "user_email", "tag": "input", "type": "email", "label": "Email Address", "bbox": { "x": 100, "y": 150, "width": 250, "height": 35 } },
+        { "id": "user_phone", "tag": "input", "type": "tel", "label": "Phone Number", "bbox": { "x": 100, "y": 200, "width": 250, "height": 35 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        { "id": "gt_email", "category": "EMAIL", "bbox": { "x": 100, "y": 150, "width": 250, "height": 35 } },
+        { "id": "gt_phone", "category": "PHONE", "bbox": { "x": 100, "y": 200, "width": 250, "height": 35 } }
+      ]
+    },
+    {
+      "id": "Scenario_C_Visual_Only_PII",
+      "name": "Scenario C — Visual-Only PII (Canvas/OCR)",
+      "description": "Canvas element rendering synthetic support email and phone hotline text",
+      "domElements": [],
+      "ocrResults": [
+        { "text": "Contact Support: help@example.test", "confidence": 0.95, "bbox": { "x": 400, "y": 80, "width": 280, "height": 30 } },
+        { "text": "Customer Care: 555-019-2834", "confidence": 0.92, "bbox": { "x": 400, "y": 125, "width": 220, "height": 30 } }
+      ],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        { "id": "gt_vis_email", "category": "EMAIL", "bbox": { "x": 400, "y": 80, "width": 280, "height": 30 } },
+        { "id": "gt_vis_phone", "category": "PHONE", "bbox": { "x": 400, "y": 125, "width": 220, "height": 30 } }
+      ]
+    },
+    {
+      "id": "Scenario_D_Mixed_DOM_Visual",
+      "name": "Scenario D — Mixed DOM + Visual PII",
+      "description": "DOM input form combined with visual face photo and OCR contact banner",
+      "domElements": [
+        { "id": "el_email", "tag": "input", "type": "email", "label": "Contact Email", "bbox": { "x": 50, "y": 100, "width": 220, "height": 35 } }
+      ],
+      "ocrResults": [
+        { "text": "Call Helpline: 555-432-1098", "confidence": 0.94, "bbox": { "x": 300, "y": 100, "width": 210, "height": 30 } }
+      ],
+      "visualRegions": [
+        { "id": "vis_face", "category": "FACE", "confidence": 0.98, "bbox": { "x": 550, "y": 80, "width": 100, "height": 100 }, "source": "vision", "protection": "BLUR" }
+      ],
+      "groundTruthRegions": [
+        { "id": "gt_dom_email", "category": "EMAIL", "bbox": { "x": 50, "y": 100, "width": 220, "height": 35 } },
+        { "id": "gt_ocr_phone", "category": "PHONE", "bbox": { "x": 300, "y": 100, "width": 210, "height": 30 } },
+        { "id": "gt_face", "category": "FACE", "bbox": { "x": 550, "y": 80, "width": 100, "height": 100 } }
+      ]
+    },
+    {
+      "id": "Scenario_E_Sensitive_High_Risk",
+      "name": "Scenario E — Sensitive High-Risk PII",
+      "description": "Form containing password, synthetic credit card, and SSN",
+      "domElements": [
+        { "id": "el_pass", "tag": "input", "type": "password", "label": "Account Password", "bbox": { "x": 100, "y": 100, "width": 250, "height": 35 } },
+        { "id": "el_card", "tag": "input", "type": "text", "nameHint": "card_number", "label": "Credit Card Number", "bbox": { "x": 100, "y": 150, "width": 250, "height": 35 } },
+        { "id": "el_ssn", "tag": "input", "type": "text", "nameHint": "ssn", "label": "Social Security Number", "bbox": { "x": 100, "y": 200, "width": 250, "height": 35 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        { "id": "gt_pass", "category": "PASSWORD", "bbox": { "x": 100, "y": 100, "width": 250, "height": 35 } },
+        { "id": "gt_card", "category": "CREDIT_CARD", "bbox": { "x": 100, "y": 150, "width": 250, "height": 35 } },
+        { "id": "gt_ssn", "category": "SSN", "bbox": { "x": 100, "y": 200, "width": 250, "height": 35 } }
+      ]
+    },
+    {
+      "id": "Scenario_F_Visual_Context_Preservation",
+      "name": "Scenario F — Visual Non-PII Context Preservation",
+      "description": "Complex dashboard layout with charts, buttons, and navigation (zero PII)",
+      "domElements": [
+        { "id": "btn_export", "tag": "button", "label": "Export Report", "bbox": { "x": 100, "y": 50, "width": 120, "height": 40 } },
+        { "id": "btn_refresh", "tag": "button", "label": "Refresh Data", "bbox": { "x": 230, "y": 50, "width": 120, "height": 40 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": []
+    },
+    {
+      "id": "Scenario_G_Multi_Step_Flow",
+      "name": "Scenario G — Multi-Step Browser Flow",
+      "description": "Multi-step interaction: Search item -> Select result -> Confirm order",
+      "domElements": [
+        { "id": "search_input", "tag": "input", "type": "text", "label": "Search Catalog", "bbox": { "x": 100, "y": 100, "width": 200, "height": 35 } }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": []
+    }
+  ]
+}

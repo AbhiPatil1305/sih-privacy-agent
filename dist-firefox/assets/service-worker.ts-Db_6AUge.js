@@ -1,0 +1,1 @@
+import{b as s}from"./browser-api-BKtq4p8J.js";async function t(e){return s.tabs.captureVisibleTab(e)}s.runtime.onMessage.addListener((e,c,a)=>{if(e.action==="CAPTURE_SCREENSHOT")return t().then(r=>a({success:!0,data:{image:r}})).catch(r=>a({success:!1,error:r.message})),!0});

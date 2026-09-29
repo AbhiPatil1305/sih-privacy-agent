@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Privacy-Preserving Browser Agent",
+  "version": "1.0.0",
+  "description": "On-device Visual Perception for Light-weight Browser Agents",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/dom-extractor.ts-loader-DlIJLdbM.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Open Privacy Dashboard",
+    "default_popup": "index.html"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "assets/dom-extractor.ts-sh9-fEOU.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "privacy-agent@sih2026.isro",
+      "strict_min_version": "109.0"
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "timestamp": "2026-09-29T13:52:54.168Z",
+  "environment": {
+    "platform": "win32",
+    "nodeVersion": "v20.20.1",
+    "trialsPerMetric": 10
+  },
+  "piiMetrics": {
+    "precision": 1,
+    "recall": 1,
+    "truePositives": 7,
+    "falsePositives": 0,
+    "falseNegatives": 0,
+    "matchingIoUThreshold": 0.5
+  },
+  "redactionCoverage": {
+    "meanCoverage": 1,
+    "minCoverage": 1,
+    "coverageAt90PercentThreshold": 1,
+    "totalGroundTruthAreaPixels": 62350
+  },
+  "contextPreservation": {
+    "falseRedactionRate": 0,
+    "visualContextPreservationRate": 1,
+    "safePageAreaPixels": 4033650,
+    "redactedSafeAreaPixels": 0
+  },
+  "latencyMetricsMs": {
+    "privacyFusion": {
+      "mean": 0.013,
+      "median": 0.008,
+      "p95": 0.05,
+      "min": 0.001,
+      "max": 0.05
+    },
+    "privacyBudget": {
+      "mean": 0.006,
+      "median": 0.001,
+      "p95": 0.036,
+      "min": 0.001,
+      "max": 0.036
+    },
+    "redactionPolicy": {
+      "mean": 0.017,
+      "median": 0.007,
+      "p95": 0.074,
+      "min": 0.002,
+      "max": 0.074
+    },
+    "totalLocalPipeline": {
+      "mean": 0.036,
+      "median": 0.021,
+      "p95": 0.147,
+      "min": 0.004,
+      "max": 0.147
+    }
+  },
+  "resourceUsage": {
+    "jsHeapUsedBytes": 4418928,
+    "jsHeapUsedMB": 4.21,
+    "screenshotViewportDimensions": "1280x800",
+    "onnxModelInit": "unavailable (Node benchmark environment — native browser WebGPU/WASM required)",
+    "tesseractWorkerInit": "unavailable (Node benchmark environment — web worker context required)"
+  },
+  "privacyBudgetScenarios": [
+    {
+      "initialBudget": 100,
+      "stepCost": 30,
+      "canAffordNetwork": true,
+      "remainingBudget": 70,
+      "status": "active"
+    },
+    {
+      "initialBudget": 50,
+      "stepCost": 30,
+      "canAffordNetwork": true,
+      "remainingBudget": 20,
+      "status": "active"
+    },
+    {
+      "initialBudget": 20,
+      "stepCost": 30,
+      "canAffordNetwork": false,
+      "remainingBudget": 20,
+      "status": "privacy_budget_exhausted"
+    },
+    {
+      "initialBudget": 0,
+      "stepCost": 30,
+      "canAffordNetwork": false,
+      "remainingBudget": 0,
+      "status": "privacy_budget_exhausted"
+    }
+  ],
+  "adaptiveRedactionScenarios": [
+    {
+      "budgetModeName": "NORMAL (100% Budget)",
+      "budgetRatio": 1,
+      "budgetMode": "NORMAL",
+      "decisions": [
+        {
+          "category": "EMAIL",
+          "strategy": "BLACK"
+        },
+        {
+          "category": "PASSWORD",
+          "strategy": "BLACK"
+        },
+        {
+          "category": "FACE",
+          "strategy": "BLUR"
+        },
+        {
+          "category": "AVATAR",
+          "strategy": "BLUR"
+        }
+      ]
+    },
+    {
+      "budgetModeName": "AGGRESSIVE (40% Budget)",
+      "budgetRatio": 0.4,
+      "budgetMode": "AGGRESSIVE",
+      "decisions": [
+        {
+          "category": "EMAIL",
+          "strategy": "BLACK"
+        },
+        {
+          "category": "PASSWORD",
+          "strategy": "BLACK"
+        },
+        {
+          "category": "FACE",
+          "strategy": "BLACK"
+        },
+        {
+          "category": "AVATAR",
+          "strategy": "BLACK"
+        }
+      ]
+    },
+    {
+      "budgetModeName": "STRICT (10% Budget)",
+      "budgetRatio": 0.1,
+      "budgetMode": "STRICT",
+      "decisions": [
+        {
+          "category": "EMAIL",
+          "strategy": "BLACK"
+        },
+        {
+          "category": "PASSWORD",
+          "strategy": "BLACK"
+        },
+        {
+          "category": "FACE",
+          "strategy": "BLACK"
+        },
+        {
+          "category": "AVATAR",
+          "strategy": "BLACK"
+        }
+      ]
+    }
+  ],
+  "agentReliability": {
+    "completionRate": 0.5,
+    "totalScenarios": 6,
+    "completedCount": 3,
+    "failedCount": 3,
+    "averageStepsExecuted": 3.67,
+    "failureCategories": {
+      "planning": 0,
+      "execution": 1,
+      "stateTransition": 0,
+      "completionDetection": 0,
+      "timeout": 0,
+      "privacyBudget": 1,
+      "maxSteps": 1
+    },
+    "scenarios": [
+      {
+        "scenarioId": "Scenario_A_2Step",
+        "task": "Search product and view item",
+        "vlmType": "Mock-VLM (Deterministic)",
+        "executedSteps": 2,
+        "status": "completed",
+        "completed": true,
+        "failureCategory": null
+      },
+      {
+        "scenarioId": "Scenario_B_3Step",
+        "task": "Login to user account",
+        "vlmType": "Mock-VLM (Deterministic)",
+        "executedSteps": 3,
+        "status": "completed",
+        "completed": true,
+        "failureCategory": null
+      },
+      {
+        "scenarioId": "Scenario_C_4StepNav",
+        "task": "Multi-page checkout flow",
+        "vlmType": "Mock-VLM (Deterministic)",
+        "executedSteps": 4,
+        "status": "completed",
+        "completed": true,
+        "failureCategory": null
+      },
+      {
+        "scenarioId": "Scenario_D_StaleTarget",
+        "task": "Click removed element",
+        "vlmType": "Mock-VLM (Deterministic)",
+        "executedSteps": 1,
+        "status": "failed",
+        "completed": false,
+        "failureCategory": "execution"
+      },
+      {
+        "scenarioId": "Scenario_E_BudgetExhaustion",
+        "task": "High-risk form submission",
+        "vlmType": "Mock-VLM (Deterministic)",
+        "executedSteps": 2,
+        "status": "privacy_budget_exhausted",
+        "completed": false,
+        "failureCategory": "privacyBudget"
+      },
+      {
+        "scenarioId": "Scenario_F_ExceedMaxSteps",
+        "task": "Complex pagination search",
+        "vlmType": "Mock-VLM (Deterministic)",
+        "executedSteps": 10,
+        "status": "max_steps",
+        "completed": false,
+        "failureCategory": "maxSteps"
+      }
+    ]
+  }
+}

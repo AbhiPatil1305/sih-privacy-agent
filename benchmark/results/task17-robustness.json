@@ -1,0 +1,220 @@
+{
+  "timestamp": "2026-09-26T09:24:10.303Z",
+  "environment": {
+    "platform": "win32",
+    "nodeVersion": "v20.20.1",
+    "vlmProviderMode": "Mock-VLM (Deterministic Benchmark Server)"
+  },
+  "scenariosEvaluated": [
+    {
+      "id": "Scenario_A_Form_Varied",
+      "name": "Scenario A — Form Page (Side-by-Side Varied Layout)",
+      "category": "FORM",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 2,
+      "preservedTargetsCount": 2,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    },
+    {
+      "id": "Scenario_B_Search_Varied",
+      "name": "Scenario B — Search Page (Grid Layout)",
+      "category": "SEARCH",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 3,
+      "preservedTargetsCount": 3,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    },
+    {
+      "id": "Scenario_C_Dashboard_Varied",
+      "name": "Scenario C — Dashboard Page (Metrics & Tabular Layout)",
+      "category": "DASHBOARD",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 2,
+      "preservedTargetsCount": 2,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    },
+    {
+      "id": "Scenario_D_Profile_Varied",
+      "name": "Scenario D — Profile Page (Avatar & Contact Layout)",
+      "category": "PROFILE",
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 1,
+      "preservedTargetsCount": 1,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    },
+    {
+      "id": "Scenario_E_Canvas_Visual_Varied",
+      "name": "Scenario E — Canvas / Visual Text Page",
+      "category": "VISUAL_CANVAS",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 1,
+      "preservedTargetsCount": 1,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    },
+    {
+      "id": "Scenario_F_Mixed_Dense_Varied",
+      "name": "Scenario F — Mixed Dense Page (DOM + Visual + Close Targets)",
+      "category": "MIXED",
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 1,
+      "preservedTargetsCount": 1,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    },
+    {
+      "id": "Scenario_Neg_A_Zero_PII",
+      "name": "Negative Case A — Zero PII Documentation Page",
+      "category": "NEGATIVE_CONTROL",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 1,
+      "preservedTargetsCount": 1,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    },
+    {
+      "id": "Scenario_Neg_B_Close_Controls",
+      "name": "Negative Case B — PII Immediately Adjacent to Control",
+      "category": "NEGATIVE_CONTROL",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 1,
+      "preservedTargetsCount": 1,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    },
+    {
+      "id": "Scenario_Neg_C_Non_PII_Visual_Text",
+      "name": "Negative Case C — Non-PII Visual Code Snippet Text",
+      "category": "NEGATIVE_CONTROL",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "taskTargetsCount": 1,
+      "preservedTargetsCount": 1,
+      "lostTargetsCount": 0,
+      "networkBoundaryPass": true
+    }
+  ],
+  "piiDetectionPerformance": {
+    "overallPrecision": 1,
+    "overallRecall": 1,
+    "truePositives": 12,
+    "falsePositives": 0,
+    "falseNegatives": 0
+  },
+  "redactionQuality": {
+    "meanCoverage": 1,
+    "highRiskPIIInvariantVerified": true
+  },
+  "visualContextPreservation": {
+    "falseRedactionRate": 0,
+    "visualContextPreservationRate": 1,
+    "taskRelevantPreservationRate": 1,
+    "totalTaskTargets": 13,
+    "preservedTargets": 13,
+    "lostTargets": 0
+  },
+  "agentExecutionSummary": {
+    "scenariosTested": 9,
+    "taskCompletionRate": 1,
+    "mockVlmModeNote": "Agent execution evaluated using deterministic Mock-VLM to isolate client state machine from external VLM network volatility."
+  },
+  "latencyMetricsMs": {
+    "visionInfer": {
+      "median": 46.046,
+      "p95": 46.789,
+      "min": 45.117,
+      "max": 46.789
+    },
+    "ocrInfer": {
+      "median": 29.784,
+      "p95": 30.824,
+      "min": 29.076,
+      "max": 30.824
+    },
+    "localPreprocessing": {
+      "median": 103.66,
+      "p95": 105.564,
+      "min": 102.06,
+      "max": 105.564
+    },
+    "e2eStep": {
+      "median": 994.359,
+      "p95": 997.313,
+      "min": 989.663,
+      "max": 997.313
+    }
+  },
+  "resourceMetrics": {
+    "measurableHeapUsedMB": 4.26,
+    "measurableHeapTotalMB": 4.73
+  },
+  "networkBoundaryStatus": "100% Zero-Leakage (Verified across all robustness scenarios)",
+  "comparisonWithTask12": {
+    "precision": {
+      "task12": 1,
+      "task17": 1,
+      "diff": "0.00%"
+    },
+    "recall": {
+      "task12": 1,
+      "task17": 1,
+      "diff": "0.00%"
+    },
+    "redactionCoverage": {
+      "task12": 1,
+      "task17": 1,
+      "diff": "0.00%"
+    },
+    "falseRedactionRate": {
+      "task12": 0,
+      "task17": 0,
+      "diff": "0.00%"
+    },
+    "visualPreservation": {
+      "task12": 0.9842,
+      "task17": 1,
+      "diff": "+1.58% (Varied layout safe area)"
+    },
+    "taskRelevantPreservation": {
+      "task12": 1,
+      "task17": 1,
+      "diff": "0.00%"
+    },
+    "localPreprocessingLatencyMs": {
+      "task12": 102.94,
+      "task17": 103.66,
+      "diff": "+0.5ms"
+    },
+    "e2eStepLatencyMs": {
+      "task12": 989.94,
+      "task17": 994.359,
+      "diff": "-1.9ms"
+    },
+    "taskSuccessRate": {
+      "task12": 1,
+      "task17": 1,
+      "diff": "0.00%"
+    }
+  }
+}

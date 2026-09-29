@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Agent E2E Test Page</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 40px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .card {
+      background-color: #1e293b;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border: 1px solid #334155;
+    }
+    h1 {
+      font-size: 20px;
+      margin-top: 0;
+      color: #38bdf8;
+    }
+    .profile-item {
+      margin-bottom: 12px;
+      padding: 8px;
+      background-color: #0f172a;
+      border-radius: 4px;
+      border-left: 3px solid #3b82f6;
+    }
+    .label {
+      font-size: 12px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+    .form-group {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #cbd5e1;
+    }
+    input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background-color: #0f172a;
+      color: white;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background-color: #22c55e;
+      color: #0f172a;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #16a34a;
+    }
+    .alert {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 6px;
+      background-color: #162e3b;
+      border: 1px solid #0284c7;
+      color: #38bdf8;
+      font-size: 13px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>User Account Profile</h1>
+    
+    <div class="profile-item">
+      <div class="label">Name</div>
+      <div class="value">John Doe</div>
+    </div>
+
+    <div class="profile-item">
+      <div class="label">Email Address</div>
+      <div class="value" id="user-email">john@example.com</div>
+    </div>
+
+    <div class="profile-item">
+      <div class="label">Password</div>
+      <div class="value">
+        <input type="password" id="password-field" name="password" value="secret-password" readonly />
+      </div>
+    </div>
+
+    <form id="age-form" onsubmit="event.preventDefault(); submitForm();">
+      <div class="form-group">
+        <label for="age-input">Age:</label>
+        <input type="number" id="age-input" name="age" placeholder="Enter age" required />
+      </div>
+
+      <button type="submit" id="submit-btn">Submit</button>
+    </form>
+
+    <div id="result-alert" class="alert">
+      <strong>Action Completed:</strong> <span id="result-text">Form submitted successfully!</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <h1>Scanned Identity Document (Non-DOM Visual Text)</h1>
+    <p style="font-size: 12px; color: #94a3b8;">Below text is rendered on a Canvas element (not in DOM text nodes):</p>
+    <canvas id="synthetic-id-card" width="450" height="150" style="border: 1px solid #334155; border-radius: 6px; width: 100%;"></canvas>
+  </div>
+
+  <div class="card" style="margin-top: 20px;" id="search-card">
+    <h1>Multi-Step Search & Profile Scenario</h1>
+    
+    <div id="step1-search">
+      <div class="form-group">
+        <label for="search-input">Search Database:</label>
+        <input type="text" id="search-input" placeholder="e.g. Search for Alice" />
+      </div>
+      <button type="button" id="search-btn" onclick="executeSearch()">Search</button>
+    </div>
+
+    <div id="step2-results" style="display: none; margin-top: 16px;">
+      <div class="label">Search Results</div>
+      <div class="profile-item" style="cursor: pointer; margin-top: 8px;" id="alice-profile-link" onclick="openProfile('Alice')">
+        <div class="value" style="color: #38bdf8;">Alice Smith - Software Engineer</div>
+        <div style="font-size: 12px; color: #94a3b8;">Click to view full profile</div>
+      </div>
+    </div>
+
+    <div id="step3-profile" style="display: none; margin-top: 16px;">
+      <div class="profile-item" style="border-left-color: #22c55e;" id="alice-profile-view">
+        <div class="label" style="color: #22c55e;">Profile Details Loaded</div>
+        <div class="value" style="font-size: 16px;">Alice Smith (Profile Verified)</div>
+        <div style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Role: Principal Security Engineer</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function drawSyntheticIdCard() {
+      const cvs = document.getElementById('synthetic-id-card');
+      if (!cvs) return;
+      const ctx = cvs.getContext('2d');
+      ctx.fillStyle = '#0284c7';
+      ctx.fillRect(0, 0, 450, 150);
+      
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 16px sans-serif';
+      ctx.fillText('IDENTITY CARD (NON-DOM IMAGE)', 20, 30);
+      
+      ctx.font = '14px monospace';
+      ctx.fillText('Name: Alice Example', 20, 65);
+      ctx.fillText('Email: alice@example.com', 20, 95);
+      ctx.fillText('Phone: +91 9000000000', 20, 125);
+    }
+    drawSyntheticIdCard();
+
+    function submitForm() {
+      const ageVal = document.getElementById('age-input').value;
+      const alertBox = document.getElementById('result-alert');
+      const resultText = document.getElementById('result-text');
+      resultText.innerText = 'Form submitted successfully! Age set to: ' + ageVal;
+      alertBox.style.display = 'block';
+    }
+
+    function executeSearch() {
+      const query = document.getElementById('search-input').value;
+      document.getElementById('step2-results').style.display = 'block';
+    }
+
+    function openProfile(name) {
+      document.getElementById('step3-profile').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+

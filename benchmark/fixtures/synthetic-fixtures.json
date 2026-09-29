@@ -1,0 +1,152 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "devicePixelRatio": 1
+  },
+  "fixtures": [
+    {
+      "id": "dom_sensitive_inputs",
+      "description": "Page containing DOM input fields for email, phone, password, and credit card",
+      "domElements": [
+        {
+          "id": "el_email",
+          "tag": "input",
+          "type": "email",
+          "label": "Email Address",
+          "nameHint": "user_email",
+          "bbox": { "x": 100, "y": 100, "width": 250, "height": 35 }
+        },
+        {
+          "id": "el_phone",
+          "tag": "input",
+          "type": "tel",
+          "label": "Phone Number",
+          "nameHint": "phone_num",
+          "bbox": { "x": 100, "y": 160, "width": 250, "height": 35 }
+        },
+        {
+          "id": "el_pass",
+          "tag": "input",
+          "type": "password",
+          "label": "Password",
+          "nameHint": "user_password",
+          "bbox": { "x": 100, "y": 220, "width": 250, "height": 35 }
+        },
+        {
+          "id": "el_submit",
+          "tag": "button",
+          "label": "Log In",
+          "bbox": { "x": 100, "y": 280, "width": 120, "height": 40 }
+        }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        {
+          "id": "gt_email",
+          "category": "EMAIL",
+          "bbox": { "x": 100, "y": 100, "width": 250, "height": 35 }
+        },
+        {
+          "id": "gt_phone",
+          "category": "PHONE",
+          "bbox": { "x": 100, "y": 160, "width": 250, "height": 35 }
+        },
+        {
+          "id": "gt_pass",
+          "category": "PASSWORD",
+          "bbox": { "x": 100, "y": 220, "width": 250, "height": 35 }
+        }
+      ]
+    },
+    {
+      "id": "visual_ocr_text",
+      "description": "Page with visual-only PII detected via OCR (email & phone number in canvas)",
+      "domElements": [],
+      "ocrResults": [
+        {
+          "text": "Contact us at support@example.com",
+          "confidence": 0.96,
+          "bbox": { "x": 400, "y": 50, "width": 280, "height": 30 }
+        },
+        {
+          "text": "Direct Hotline: 555-019-2834",
+          "confidence": 0.93,
+          "bbox": { "x": 400, "y": 95, "width": 230, "height": 30 }
+        }
+      ],
+      "visualRegions": [],
+      "groundTruthRegions": [
+        {
+          "id": "gt_ocr_email",
+          "category": "EMAIL",
+          "bbox": { "x": 400, "y": 50, "width": 280, "height": 30 }
+        },
+        {
+          "id": "gt_ocr_phone",
+          "category": "PHONE",
+          "bbox": { "x": 400, "y": 95, "width": 230, "height": 30 }
+        }
+      ]
+    },
+    {
+      "id": "vision_object_biometrics",
+      "description": "Page with visual object detections (face & avatar photo)",
+      "domElements": [],
+      "ocrResults": [],
+      "visualRegions": [
+        {
+          "id": "vis_face_1",
+          "category": "FACE",
+          "confidence": 0.99,
+          "bbox": { "x": 750, "y": 100, "width": 120, "height": 120 },
+          "source": "vision",
+          "protection": "BLUR"
+        },
+        {
+          "id": "vis_avatar_1",
+          "category": "AVATAR",
+          "confidence": 0.92,
+          "bbox": { "x": 750, "y": 240, "width": 80, "height": 80 },
+          "source": "vision",
+          "protection": "BLUR"
+        }
+      ],
+      "groundTruthRegions": [
+        {
+          "id": "gt_face",
+          "category": "FACE",
+          "bbox": { "x": 750, "y": 100, "width": 120, "height": 120 }
+        },
+        {
+          "id": "gt_avatar",
+          "category": "AVATAR",
+          "bbox": { "x": 750, "y": 240, "width": 80, "height": 80 }
+        }
+      ]
+    },
+    {
+      "id": "safe_no_pii",
+      "description": "Safe documentation page with search input and header links, zero PII",
+      "domElements": [
+        {
+          "id": "el_search",
+          "tag": "input",
+          "type": "text",
+          "label": "Search docs...",
+          "bbox": { "x": 50, "y": 20, "width": 300, "height": 35 }
+        },
+        {
+          "id": "el_docs_link",
+          "tag": "a",
+          "label": "Documentation",
+          "bbox": { "x": 370, "y": 25, "width": 100, "height": 25 }
+        }
+      ],
+      "ocrResults": [],
+      "visualRegions": [],
+      "groundTruthRegions": []
+    }
+  ]
+}

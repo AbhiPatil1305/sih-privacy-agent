@@ -1,0 +1,206 @@
+{
+  "timestamp": "2026-09-29T13:52:54.439Z",
+  "environment": {
+    "platform": "win32",
+    "nodeVersion": "v20.20.1",
+    "trialsPerMetric": 10,
+    "vlmProviderMode": "Mock-VLM (Deterministic Benchmark Server)"
+  },
+  "scenariosEvaluated": [
+    {
+      "id": "Scenario_A_Normal_Page",
+      "name": "Scenario A — Normal Webpage (Zero PII)",
+      "groundTruthRegionCount": 0
+    },
+    {
+      "id": "Scenario_B_DOM_PII",
+      "name": "Scenario B — DOM-Visible PII",
+      "groundTruthRegionCount": 2
+    },
+    {
+      "id": "Scenario_C_Visual_Only_PII",
+      "name": "Scenario C — Visual-Only PII (Canvas/OCR)",
+      "groundTruthRegionCount": 2
+    },
+    {
+      "id": "Scenario_D_Mixed_DOM_Visual",
+      "name": "Scenario D — Mixed DOM + Visual PII",
+      "groundTruthRegionCount": 3
+    },
+    {
+      "id": "Scenario_E_Sensitive_High_Risk",
+      "name": "Scenario E — Sensitive High-Risk PII",
+      "groundTruthRegionCount": 3
+    },
+    {
+      "id": "Scenario_F_Visual_Context_Preservation",
+      "name": "Scenario F — Visual Non-PII Context Preservation",
+      "groundTruthRegionCount": 0
+    },
+    {
+      "id": "Scenario_G_Multi_Step_Flow",
+      "name": "Scenario G — Multi-Step Browser Flow",
+      "groundTruthRegionCount": 0
+    }
+  ],
+  "piiDetectionPerformance": {
+    "overallPrecision": 1,
+    "overallRecall": 1,
+    "truePositives": 10,
+    "falsePositives": 0,
+    "falseNegatives": 0,
+    "matchingIoUThreshold": 0.5,
+    "categoryMetrics": {
+      "EMAIL": {
+        "tp": 3,
+        "fn": 0,
+        "fp": 0
+      },
+      "PHONE": {
+        "tp": 3,
+        "fn": 0,
+        "fp": 0
+      },
+      "FACE": {
+        "tp": 1,
+        "fn": 0,
+        "fp": 0
+      },
+      "PASSWORD": {
+        "tp": 1,
+        "fn": 0,
+        "fp": 0
+      },
+      "CREDIT_CARD": {
+        "tp": 1,
+        "fn": 0,
+        "fp": 0
+      },
+      "SSN": {
+        "tp": 1,
+        "fn": 0,
+        "fp": 0
+      }
+    }
+  },
+  "redactionQuality": {
+    "meanCoverage": 1,
+    "minCoverage": 1,
+    "coverageAt90PercentThreshold": 1,
+    "highRiskPIIInvariantVerified": true
+  },
+  "visualContextPreservation": {
+    "falseRedactionRate": 0,
+    "visualContextPreservationRate": 1,
+    "totalViewportAreaPixels": 1024000,
+    "safePageAreaPixels": 7085250,
+    "redactedSafeAreaPixels": 0
+  },
+  "latencyMetricsMs": {
+    "screenshotCapture": {
+      "median": 13.75,
+      "p95": 14.309,
+      "min": 12.726,
+      "max": 14.309
+    },
+    "domExtraction": {
+      "median": 4.727,
+      "p95": 5.083,
+      "min": 4.311,
+      "max": 5.083
+    },
+    "domSanitization": {
+      "median": 0.001,
+      "p95": 0.045,
+      "min": 0,
+      "max": 0.045
+    },
+    "visionModelInitCold": {
+      "coldStartMs": 145
+    },
+    "visionInferWarm": {
+      "median": 45.026,
+      "p95": 46.591,
+      "min": 42.208,
+      "max": 46.591
+    },
+    "ocrWorkerInitCold": {
+      "coldStartMs": 85
+    },
+    "ocrInferWarm": {
+      "median": 29.135,
+      "p95": 31.844,
+      "min": 28.456,
+      "max": 31.844
+    },
+    "privacyFusion": {
+      "median": 0.005,
+      "p95": 0.047,
+      "min": 0.001,
+      "max": 0.047
+    },
+    "privacyBudgetCalc": {
+      "median": 0.002,
+      "p95": 0.035,
+      "min": 0.001,
+      "max": 0.035
+    },
+    "redactionPolicy": {
+      "median": 0.002,
+      "p95": 0.057,
+      "min": 0.001,
+      "max": 0.057
+    },
+    "offscreenRedaction": {
+      "median": 9.715,
+      "p95": 10.407,
+      "min": 9.148,
+      "max": 10.407
+    },
+    "payloadConstruction": {
+      "median": 0.004,
+      "p95": 0.015,
+      "min": 0.003,
+      "max": 0.015
+    },
+    "totalLocalPipeline": {
+      "median": 102.243,
+      "p95": 105.366,
+      "min": 99.131,
+      "max": 105.366
+    }
+  },
+  "endToEndLatencyMs": {
+    "localPipelineMedianMs": 102.243,
+    "mockVlmPlanningMs": 105,
+    "actionExecutionMs": 32,
+    "pageSettlementMs": 750,
+    "totalE2EStepMs": 989.243
+  },
+  "resourceUsage": {
+    "applicationMeasurableHeapUsedMB": 4.28,
+    "applicationHeapTotalMB": 4.73,
+    "nativeBrowserModelMemoryNote": "ONNX WebGPU and Tesseract Web Worker native memory is isolated inside browser tab contexts and unmeasurable via standard Node JS process APIs."
+  },
+  "networkPayloadAnalysis": {
+    "rawLocalPayloadBytes": 450358,
+    "sanitizedNetworkPayloadBytes": 320358,
+    "payloadReductionPercent": 28.87,
+    "zeroPiiLeakageVerified": true
+  },
+  "agentReliabilitySummary": {
+    "completionRate": 0.5,
+    "totalScenarios": 6,
+    "completedScenarios": 3,
+    "failureCategories": {
+      "execution": 1,
+      "privacyBudget": 1,
+      "maxSteps": 1
+    }
+  },
+  "knownLimitations": [
+    "Native WebGPU and Tesseract worker heap memory is isolated inside Chrome tab processes.",
+    "Mock VLM provider mode excludes live network RTT and LLM token generation latency.",
+    "Evaluation uses synthetic PII test fixtures to guarantee local zero-leakage testing."
+  ]
+}
