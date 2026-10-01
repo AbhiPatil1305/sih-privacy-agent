@@ -6,7 +6,7 @@ export function runPrivacyIntelligence(domElements: DOMElement[], ocrResults: OC
   let regionCounter = 1;
 
   const SENSITIVE_INPUT_TYPES = ['password', 'hidden', 'tel', 'email'];
-  const SENSITIVE_HINTS = ['email', 'password', 'phone', 'card', 'ssn', 'username'];
+  const SENSITIVE_HINTS = ['email', 'password', 'phone', 'card', 'ssn', 'username', 'aadhaar', 'pan', 'ifsc', 'passport'];
   
   for (const el of domElements) {
     let isSensitiveStructure = false;
@@ -24,6 +24,12 @@ export function runPrivacyIntelligence(domElements: DOMElement[], ocrResults: OC
          if (hintLower.includes('email')) cat = 'EMAIL';
          if (hintLower.includes('password')) cat = 'PASSWORD';
          if (hintLower.includes('phone')) cat = 'PHONE';
+         if (hintLower.includes('card')) cat = 'CREDIT_CARD';
+         if (hintLower.includes('ssn')) cat = 'SSN';
+         if (hintLower.includes('aadhaar')) cat = 'AADHAAR';
+         if (hintLower.includes('pan')) cat = 'PAN';
+         if (hintLower.includes('ifsc')) cat = 'IFSC';
+         if (hintLower.includes('passport')) cat = 'PASSPORT';
        }
     }
 
@@ -43,8 +49,12 @@ export function runPrivacyIntelligence(domElements: DOMElement[], ocrResults: OC
       let matchedCategory: string | null = null;
       if (PII_PATTERNS.email.test(el.label)) matchedCategory = 'EMAIL';
       else if (PII_PATTERNS.phone.test(el.label)) matchedCategory = 'PHONE';
-      else if (PII_PATTERNS.creditCard.test(el.label)) matchedCategory = 'OTHER';
-      else if (PII_PATTERNS.ssn.test(el.label)) matchedCategory = 'OTHER';
+      else if (PII_PATTERNS.creditCard.test(el.label)) matchedCategory = 'CREDIT_CARD';
+      else if (PII_PATTERNS.ssn.test(el.label)) matchedCategory = 'SSN';
+      else if (PII_PATTERNS.aadhaar.test(el.label)) matchedCategory = 'AADHAAR';
+      else if (PII_PATTERNS.pan.test(el.label)) matchedCategory = 'PAN';
+      else if (PII_PATTERNS.ifsc.test(el.label)) matchedCategory = 'IFSC';
+      else if (PII_PATTERNS.passport.test(el.label)) matchedCategory = 'PASSPORT';
 
       if (matchedCategory) {
         regions.push({
@@ -63,7 +73,12 @@ export function runPrivacyIntelligence(domElements: DOMElement[], ocrResults: OC
     let matchedCategory: string | null = null;
     if (PII_PATTERNS.email.test(ocr.text)) matchedCategory = 'EMAIL';
     else if (PII_PATTERNS.phone.test(ocr.text)) matchedCategory = 'PHONE';
-    else if (PII_PATTERNS.creditCard.test(ocr.text)) matchedCategory = 'OTHER';
+    else if (PII_PATTERNS.creditCard.test(ocr.text)) matchedCategory = 'CREDIT_CARD';
+    else if (PII_PATTERNS.ssn.test(ocr.text)) matchedCategory = 'SSN';
+    else if (PII_PATTERNS.aadhaar.test(ocr.text)) matchedCategory = 'AADHAAR';
+    else if (PII_PATTERNS.pan.test(ocr.text)) matchedCategory = 'PAN';
+    else if (PII_PATTERNS.ifsc.test(ocr.text)) matchedCategory = 'IFSC';
+    else if (PII_PATTERNS.passport.test(ocr.text)) matchedCategory = 'PASSPORT';
 
     if (matchedCategory) {
       regions.push({

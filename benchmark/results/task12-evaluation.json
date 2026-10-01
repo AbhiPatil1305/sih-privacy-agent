@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-29T13:52:54.439Z",
+  "timestamp": "2026-10-01T16:48:06.562Z",
   "environment": {
     "platform": "win32",
     "nodeVersion": "v20.20.1",
@@ -98,84 +98,84 @@
   },
   "latencyMetricsMs": {
     "screenshotCapture": {
-      "median": 13.75,
-      "p95": 14.309,
-      "min": 12.726,
-      "max": 14.309
+      "median": 13.613,
+      "p95": 14.475,
+      "min": 12.615,
+      "max": 14.475
     },
     "domExtraction": {
-      "median": 4.727,
-      "p95": 5.083,
-      "min": 4.311,
-      "max": 5.083
+      "median": 4.756,
+      "p95": 5.145,
+      "min": 4.223,
+      "max": 5.145
     },
     "domSanitization": {
       "median": 0.001,
-      "p95": 0.045,
-      "min": 0,
-      "max": 0.045
+      "p95": 0.036,
+      "min": 0.001,
+      "max": 0.036
     },
     "visionModelInitCold": {
       "coldStartMs": 145
     },
     "visionInferWarm": {
-      "median": 45.026,
-      "p95": 46.591,
-      "min": 42.208,
-      "max": 46.591
+      "median": 45.446,
+      "p95": 46.743,
+      "min": 42.684,
+      "max": 46.743
     },
     "ocrWorkerInitCold": {
       "coldStartMs": 85
     },
     "ocrInferWarm": {
-      "median": 29.135,
-      "p95": 31.844,
-      "min": 28.456,
-      "max": 31.844
+      "median": 30.318,
+      "p95": 31.978,
+      "min": 28.208,
+      "max": 31.978
     },
     "privacyFusion": {
       "median": 0.005,
-      "p95": 0.047,
+      "p95": 0.046,
       "min": 0.001,
-      "max": 0.047
+      "max": 0.046
     },
     "privacyBudgetCalc": {
       "median": 0.002,
-      "p95": 0.035,
+      "p95": 0.028,
       "min": 0.001,
-      "max": 0.035
+      "max": 0.028
     },
     "redactionPolicy": {
       "median": 0.002,
-      "p95": 0.057,
+      "p95": 0.052,
       "min": 0.001,
-      "max": 0.057
+      "max": 0.052
     },
     "offscreenRedaction": {
-      "median": 9.715,
-      "p95": 10.407,
-      "min": 9.148,
-      "max": 10.407
+      "median": 10.061,
+      "p95": 10.454,
+      "min": 9.828,
+      "max": 10.454
     },
     "payloadConstruction": {
-      "median": 0.004,
-      "p95": 0.015,
+      "median": 0.003,
+      "p95": 0.014,
       "min": 0.003,
-      "max": 0.015
+      "max": 0.014
     },
     "totalLocalPipeline": {
-      "median": 102.243,
-      "p95": 105.366,
-      "min": 99.131,
-      "max": 105.366
+      "median": 103.951,
+      "p95": 106.699,
+      "min": 99.266,
+      "max": 106.699
     }
   },
   "endToEndLatencyMs": {
-    "localPipelineMedianMs": 102.243,
+    "localPipelineMedianMs": 103.951,
     "mockVlmPlanningMs": 105,
     "actionExecutionMs": 32,
     "pageSettlementMs": 750,
-    "totalE2EStepMs": 989.243
+    "totalE2EStepMs": 990.951
   },
   "resourceUsage": {
     "applicationMeasurableHeapUsedMB": 4.28,

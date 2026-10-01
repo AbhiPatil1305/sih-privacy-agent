@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "node server/server.js",
+    "server": "node server/server.js",
+    "test": "node benchmark/run-final-validation.cjs",
     "build": "tsc && vite build",
     "build:firefox": "node scripts/build-firefox.cjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",

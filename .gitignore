@@ -1,4 +1,6 @@
 node_modules/
 dist/
+dist-firefox/
 .env
-.env.local
+.env.*
+server/.env

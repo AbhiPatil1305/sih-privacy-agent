@@ -1,4 +1,5 @@
 const OllamaVLMProvider = require('./ollama-provider');
+const OpenRouterProvider = require('./openrouter-provider');
 const OpenAIVLMProvider = require('./openai-provider');
 const MockVLMProvider = require('./mock-vlm-provider');
 
@@ -8,6 +9,8 @@ function createVLMProvider(config = {}) {
   switch (providerName) {
     case 'ollama':
       return new OllamaVLMProvider(config);
+    case 'openrouter':
+      return new OpenRouterProvider(config);
     case 'openai':
     case 'vllm':
     case 'lmstudio':
@@ -15,14 +18,16 @@ function createVLMProvider(config = {}) {
     case 'mock':
       return new MockVLMProvider(config);
     default:
-      console.warn(`[VLM Factory] Unknown VLM provider "${providerName}", defaulting to Ollama provider.`);
-      return new OllamaVLMProvider(config);
+      const err = new Error(`MODEL_UNAVAILABLE: Unknown VLM provider "${providerName}". Supported providers: ollama, openrouter, openai, mock.`);
+      err.code = 'MODEL_UNAVAILABLE';
+      throw err;
   }
 }
 
 module.exports = {
   createVLMProvider,
   OllamaVLMProvider,
+  OpenRouterProvider,
   OpenAIVLMProvider,
   MockVLMProvider
 };

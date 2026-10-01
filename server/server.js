@@ -1,7 +1,8 @@
+const path = require('path');
 require('dotenv').config();
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const AgentPlanner = require('./agent/planner');
 
 const app = express();
@@ -27,6 +28,8 @@ app.post('/api/plan', async (req, res) => {
   const sanitizedScreenshot = req.body.sanitizedScreenshot || context.sanitizedScreenshot;
   const sanitizedDOM = req.body.sanitizedDOM || context.sanitizedDOM;
 
+  const step = req.body.stepNumber || req.body.step || context.step || 1;
+
   // 1. Validate Request Body
   if (!task || typeof task !== 'string' || !task.trim()) {
     console.log("[API] Request rejected: missing or invalid task.");
@@ -38,7 +41,7 @@ app.post('/api/plan', async (req, res) => {
   }
 
   // 2. Privacy-Respecting Development Logging (NO RAW PII OR PASSWORDS LOGGED)
-  console.log(`[API] Task: "${task}"`);
+  console.log(`[API] Task: "${task}" (Step ${step})`);
   console.log(`[API] Sanitized screenshot received: ${Boolean(sanitizedScreenshot)} ${sanitizedScreenshot ? `(${sanitizedScreenshot.length} chars base64)` : ''}`);
   console.log(`[API] Sanitized DOM received: ${Boolean(sanitizedDOM)}`);
   console.log(`[API] Visible elements count: ${visibleElements.length}`);
@@ -47,6 +50,7 @@ app.post('/api/plan', async (req, res) => {
   try {
     const planResult = await planner.planTask({
       task,
+      step,
       sanitizedScreenshot,
       visibleElements,
       sanitizedDOM

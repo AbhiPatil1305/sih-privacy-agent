@@ -21,10 +21,13 @@ class OllamaVLMProvider extends BaseVLMProvider {
       try {
         return await this._singleAttemptGeneratePlan(params);
       } catch (err) {
-        const isTransient = err.code === 'MODEL_UNAVAILABLE' || err.code === 'ECONNRESET' || (err.message && (err.message.includes('503') || err.message.includes('500')));
+        if (err.code === 'MODEL_UNAVAILABLE' || err.code === 'ECONNREFUSED') {
+          throw err;
+        }
+        const isTransient = err.code === 'ECONNRESET' || (err.message && (err.message.includes('503') || err.message.includes('500')));
         if (isTransient && attempt <= maxRetries) {
-          console.warn(`[Ollama Provider] Transient connection/model error on attempt ${attempt}/${maxRetries + 1}: ${err.message}. Retrying in 2.5s...`);
-          await new Promise(r => setTimeout(r, 2500));
+          console.warn(`[Ollama Provider] Transient connection error on attempt ${attempt}/${maxRetries + 1}: ${err.message}. Retrying in 1s...`);
+          await new Promise(r => setTimeout(r, 1000));
           continue;
         }
         throw err;

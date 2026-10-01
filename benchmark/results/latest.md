@@ -1,6 +1,6 @@
 # SIH 2026 Privacy Agent — Benchmark Results Report
 
-**Execution Timestamp**: `2026-09-29T13:52:54.168Z`  
+**Execution Timestamp**: `2026-10-01T16:48:06.378Z`  
 **Environment**: Node.js `v20.20.1` (`win32`)  
 **Trials per Metric**: `10`
 
@@ -34,10 +34,10 @@
 
 | Pipeline Stage | Mean (ms) | Median (ms) | P95 (ms) | Min (ms) | Max (ms) |
 |----------------|-----------|-------------|----------|----------|----------|
-| Privacy Fusion | `0.013` | `0.008` | `0.05` | `0.001` | `0.05` |
-| Privacy Budget | `0.006` | `0.001` | `0.036` | `0.001` | `0.036` |
-| Redaction Policy | `0.017` | `0.007` | `0.074` | `0.002` | `0.074` |
-| **Total Local Pipeline** | **`0.036`** | **`0.021`** | **`0.147`** | **`0.004`** | **`0.147`** |
+| Privacy Fusion | `0.013` | `0.009` | `0.051` | `0.001` | `0.051` |
+| Privacy Budget | `0.006` | `0.001` | `0.029` | `0.001` | `0.029` |
+| Redaction Policy | `0.016` | `0.004` | `0.069` | `0.002` | `0.069` |
+| **Total Local Pipeline** | **`0.034`** | **`0.017`** | **`0.129`** | **`0.004`** | **`0.129`** |
 
 ---
 

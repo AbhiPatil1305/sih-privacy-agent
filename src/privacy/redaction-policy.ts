@@ -47,7 +47,11 @@ const HIGH_RISK_CATEGORIES = new Set([
   'CREDIT_CARD',
   'SSN',
   'EMAIL',
-  'PHONE'
+  'PHONE',
+  'AADHAAR',
+  'PAN',
+  'IFSC',
+  'PASSPORT'
 ]);
 
 /**
