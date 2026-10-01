@@ -258,6 +258,66 @@ export default function App() {
           strategy: r.protection as any
         })));
 
+        // Live Inspector Overlay Rendering on Active Tab
+        try {
+          await browserAPI.scripting.executeScript({
+            target: { tabId: tab.id! },
+            func: (regions: any, isEnabled: boolean) => {
+              let overlayContainer = document.getElementById('sih-privacy-inspector-overlay') as HTMLDivElement | null;
+              if (!isEnabled) {
+                if (overlayContainer) overlayContainer.remove();
+                return;
+              }
+              if (!overlayContainer) {
+                overlayContainer = document.createElement('div');
+                overlayContainer.id = 'sih-privacy-inspector-overlay';
+                overlayContainer.style.position = 'fixed';
+                overlayContainer.style.top = '0';
+                overlayContainer.style.left = '0';
+                overlayContainer.style.width = '100vw';
+                overlayContainer.style.height = '100vh';
+                overlayContainer.style.pointerEvents = 'none';
+                overlayContainer.style.zIndex = '2147483647';
+                document.body.appendChild(overlayContainer);
+              }
+              overlayContainer.innerHTML = '';
+              regions.forEach((reg: any) => {
+                const box = document.createElement('div');
+                box.style.position = 'absolute';
+                box.style.left = `${reg.bbox.x}px`;
+                box.style.top = `${reg.bbox.y}px`;
+                box.style.width = `${reg.bbox.width}px`;
+                box.style.height = `${reg.bbox.height}px`;
+                box.style.boxSizing = 'border-box';
+                box.style.pointerEvents = 'none';
+                let strokeColor = '#22c55e'; // Green for DOM
+                if (reg.source === 'vision') strokeColor = '#3b82f6'; // Blue for Vision
+                if (reg.source === 'ocr') strokeColor = '#ef4444'; // Red for OCR
+                box.style.border = `2px dashed ${strokeColor}`;
+                box.style.backgroundColor = reg.protection === 'BLACK' ? 'rgba(0,0,0,0.25)' : 'rgba(59,130,246,0.15)';
+                box.style.borderRadius = '3px';
+                const label = document.createElement('span');
+                label.innerText = `${reg.category} (${reg.source.toUpperCase()})`;
+                label.style.position = 'absolute';
+                label.style.top = '-18px';
+                label.style.left = '0';
+                label.style.backgroundColor = strokeColor;
+                label.style.color = '#ffffff';
+                label.style.fontSize = '10px';
+                label.style.fontWeight = 'bold';
+                label.style.padding = '1px 5px';
+                label.style.borderRadius = '3px';
+                label.style.whiteSpace = 'nowrap';
+                box.appendChild(label);
+                overlayContainer?.appendChild(box);
+              });
+            },
+            args: [privacyRegions, inspectorOverlayActive]
+          });
+        } catch (e) {
+          // Non-blocking catch for tab scripting errors
+        }
+
         // Stage 4.5: PRIVACY BUDGET CHECK
         const privacyCost = calculatePrivacyCost(privacyRegions);
 
@@ -471,6 +531,30 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* LIVE INSPECTOR OVERLAY TOGGLE CONTROL */}
+      <div style={{ backgroundColor: '#1e293b', padding: '8px 10px', borderRadius: '6px', marginBottom: '12px', fontSize: '11px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontWeight: 'bold', color: '#cbd5e1', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          {inspectorOverlayActive ? <Eye size={14} style={{ color: '#38bdf8' }} /> : <EyeOff size={14} style={{ color: '#94a3b8' }} />}
+          Live Inspector Overlay (Page)
+        </span>
+        <button
+          onClick={() => setInspectorOverlayActive(!inspectorOverlayActive)}
+          style={{
+            backgroundColor: inspectorOverlayActive ? '#0284c7' : '#334155',
+            color: '#ffffff',
+            border: 'none',
+            padding: '4px 10px',
+            borderRadius: '12px',
+            fontSize: '11px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease'
+          }}
+        >
+          {inspectorOverlayActive ? 'ACTIVE (ON)' : 'DISABLED (OFF)'}
+        </button>
+      </div>
 
       {/* REAL-TIME CLIENT RESOURCE TELEMETRY (20% Evaluation Metric) */}
       <div style={{ backgroundColor: '#1e293b', padding: '8px 10px', borderRadius: '6px', marginBottom: '12px', fontSize: '11px' }}>
