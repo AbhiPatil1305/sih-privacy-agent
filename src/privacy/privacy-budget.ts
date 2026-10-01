@@ -4,7 +4,7 @@ import { PrivacyRegion, PrivacyBudgetState, PrivacyCostResult } from '../shared/
  * DEFAULT PRIVACY RISK BUDGET
  * Note: This is an engineering risk accounting budget, NOT formal differential privacy epsilon (ε).
  */
-export const DEFAULT_PRIVACY_BUDGET = 100;
+export const DEFAULT_PRIVACY_BUDGET = 250;
 
 /**
  * Centralized Privacy Risk Cost Table
