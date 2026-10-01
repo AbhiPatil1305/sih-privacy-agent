@@ -36,21 +36,21 @@
 
 ---
 
-### 🎬 Scene 4: Action Execution & Offline Resilient Planner (2:00 - 2:40)
+### 🎬 Scene 4: PS Evaluation Metrics & PII Image Detection Test (2:00 - 2:45)
 
 | Time | 🖥️ Screen Action (What to Show) | 🎙️ Voiceover Script (What to Say) |
 | :--- | :--- | :--- |
-| **2:00 - 2:20** | In the popup, type prompt: `search jackets for men` and click **Execute Task**. Watch the extension type into search box and click submit button. | *"Now let's execute a real task: 'search jackets for men'. The local redactor applies solid BLACK pixel masking over credentials and tokenizes text before sending safe context to the planner."* |
-| **2:20 - 2:40** | Show terminal window executing `npm test` showing 100% PASS across Tasks 5 through 13. | *"Our server features a dual-engine architecture: a multimodal VLM planner paired with an offline multi-tier rule planner. Even if the server is offline, our deterministic rule planner ensures 100% agent operational uptime."* |
+| **2:00 - 2:20** | Open Terminal and run Indian PII Image Detection test:<br/>`node scratch/test-indian-pii-eval.cjs` | *"To address Problem Statement Metric #2 and #3—PII Detection Recall & Redaction Precision—we run our Indian PII benchmark. As shown on screen, our model achieves 100% Recall across Aadhaar, PAN, IFSC, and Passports with an overall F1 score of 97.2%."* |
+| **2:20 - 2:45** | Run Real-World GUIGuard & PS Audit commands:<br/>`node benchmark/run-task12-eval.cjs`<br/>`node benchmark/run-ps-audit.cjs` | *"Next, we run our GUIGuard Real-World Evaluation and Problem Statement Audit commands. They verify ground-truth visual screen context accuracy, payload reduction, and confirm 100% compliance with ISRO SIH Problem Statement 26171."* |
 
 ---
 
-### 🎬 Scene 5: GUIGuard Benchmark Validation & Conclusion (2:40 - 3:00)
+### 🎬 Scene 5: Action Execution & Conclusion (2:45 - 3:15)
 
 | Time | 🖥️ Screen Action (What to Show) | 🎙️ Voiceover Script (What to Say) |
 | :--- | :--- | :--- |
-| **2:40 - 2:55** | Show `docs/unique-features-and-gui-guard-bench-results.md` on screen highlighting 100% GUIGuard Precision and Recall. | *"Finally, our pipeline was validated against the external GUIGuard benchmark (arXiv:2601.18842), achieving 100% Privacy Precision, 100% Recall, 100% Task Control Preservation, and 0.0% Network Leakage."* |
-| **2:55 - 3:00** | Show final GitHub repository page or summary slide. | *"Thank you evaluators! All test suites, code, and documentation are ready for your review in our repository."* |
+| **2:45 - 3:05** | In the extension popup on `sih-demo.html`, type prompt `search jackets for men` & click **Execute Task**. Watch search input typing & submit button click. | *"Now let's demonstrate live task execution: 'search jackets for men'. The local redactor applies BLACK pixel masking over credentials before dispatching sanitized context. Our server features a dual-engine architecture with an offline rule planner fallback ensuring 100% uptime."* |
+| **3:05 - 3:15** | Show `docs/unique-features-and-gui-guard-bench-results.md` and final GitHub repository page. | *"All test suites, benchmark results, and documentation are ready for your review in our repository. Thank you evaluators!"* |
 
 ---
 
